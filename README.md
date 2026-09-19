@@ -19,7 +19,9 @@ BMOL 스타일 디자인 + al-folio/Jekyll 방식 콘텐츠 관리 + GitHub Page
 | Positions 문구 | `_pages/positions.md` |
 | 상단 메뉴 | `_data/navigation.yml` |
 | 푸터, 연구실 이메일 | `_config.yml` 의 `lab:` |
-| 디자인 (색, 글꼴, 배치) | `assets/css/bmol-style.css` |
+| 홈 숫자 통계 항목 | `_pages/about.md` 의 `stats:` (숫자는 자동 계산) |
+| **사이트 전체 색** | `assets/css/tokens.css` (여기만 수정) |
+| 디자인 (글꼴 크기, 여백, 배치) | `assets/css/style.css` |
 
 ## 자주 하는 작업
 
@@ -62,6 +64,24 @@ date: 2027-03-01
 Gildong's work is accepted to _**Nature Physics**_. _Congratulations!_
 ```
 
+### 색 바꾸기
+`assets/css/tokens.css`의 ① 기본 색 8개만 고치면 사이트 전체에 반영됩니다. 다른 CSS 파일에는 색상 값을 직접 쓰지 마세요.
+
+| 변수 | 쓰이는 곳 |
+|---|---|
+| `--color-primary` | 링크, 버튼, 현재 메뉴, 논문 연도, 강조 연구 카드 |
+| `--color-secondary` | 하단 Join 띠 같은 어두운 면 |
+| `--color-accent` | 로고 "at POSTECH", 작은 라벨, 숫자 통계, 스크롤 진행 바 |
+| `--color-bg` / `--color-surface` | 페이지 배경 / 카드 배경 |
+| `--color-text` / `--color-muted` | 본문 글자 / 보조 글자 |
+| `--color-border` | 구분선, 테두리 |
+
+브라우저 탭 아이콘은 `assets/img/favicon.svg`에서 따로 바꿉니다 (CSS 변수 사용 불가).
+
+### 홈 숫자 통계
+`_pages/about.md`의 `stats:`에서 항목을 정합니다. 숫자는 직접 적지 않고 `source`에 따라 자동으로 계산됩니다.
+`publications`(papers.bib 항목 수), `members`(members.yml 인원 수), `alumni`, `projects`를 쓸 수 있습니다.
+
 ### 새 연구 주제
 `_projects/`의 기존 파일을 복사해서 `title`, `anchor`, `importance`(순서), `card`(홈 카드 문구), `related`를 고치고 본문을 씁니다.
 
@@ -86,4 +106,8 @@ assets/css, js, img/   디자인 파일과 이미지
 - 최초 1회 설정: **Settings → Pages → Source: GitHub Actions**
 - 학교 도메인 연결 시: Settings → Pages → Custom domain에 주소 입력 + 학교 전산팀에 DNS(CNAME) 설정 요청. 사이트 코드는 수정할 필요 없습니다.
 
-디자인은 KAIST BMOL 홈페이지(https://bmol.kaist.ac.kr/)를 참고해 새로 작성했고, 콘텐츠 관리 구조는 al-folio(https://github.com/alshedivat/al-folio)의 방식을 따랐습니다.
+## 버전 기록과 되돌리기
+
+변경 내역과 되돌리는 방법은 [`CHANGELOG.md`](CHANGELOG.md)에 있습니다.
+
+색은 기존 Kim Group Weebly 홈페이지의 색을 바탕으로 했습니다. 레이아웃과 인터랙션은 KAIST BMOL 홈페이지(https://bmol.kaist.ac.kr/)를 참고해 새로 작성했고, 콘텐츠 관리 구조는 al-folio(https://github.com/alshedivat/al-folio)의 방식을 따랐습니다.
