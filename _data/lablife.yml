@@ -1,28 +1,71 @@
-# Lab Life 사진. 적힌 순서대로 표시됩니다 (최신 사진을 맨 위에).
-# image: assets/img/lab-life/ 안의 파일 이름
-- image: lablife-01.jpg
-  caption: 2022년 스승의 날
-- image: lablife-02.jpg
-  caption: 2022년 ALTA 학회
-- image: lablife-03.jpg
-  caption: 2022년 ALTA 학회
-- image: lablife-04.jpg
-  caption: 2022년 겨울방학 연구참여 프로그램
-- image: lablife-05.jpg
-  caption: 2022년 겨울방학 연구참여 프로그램
-- image: lablife-06.jpg
-  caption: 2021년 3월 연구실 미팅
-- image: lablife-07.jpg
-  caption: 2021년 2월 구룡포
-- image: lablife-08.jpg
-  caption: 2021년 2월 구룡포
-- image: lablife-09.jpg
-  caption: 2019년 기념사진
-- image: lablife-10.jpg
-  caption: 2019년 봄 회식
-- image: lablife-11.jpg
-  caption: 2019 신년회 회식
-- image: lablife-12.jpg
-  caption: 2017 ICAMD 참석 및 Best Poster Award 수상 (송수범)
-- image: lablife-13.jpg
-  caption: 2017 송년회 회식
+# Lab Life 이벤트 목록 (Lab Life 페이지의 유일한 데이터)
+# - 한 항목 = 이벤트 하나. 페이지에서는 날짜 최신순으로 자동 정렬되고 연도별로 묶입니다.
+# - 파일 안의 순서는 상관없습니다. 날짜가 같으면 이 파일에 적힌 순서대로 표시됩니다.
+#
+# 새 이벤트 추가:
+#   1) 사진을 assets/img/lab-life/ 에 올립니다 (예: 2026-05-teachers-day-1.jpg, 파일 이름에 공백 없이)
+#   2) 아래 형식으로 항목을 추가합니다.
+#
+#   - title: 스승의 날
+#     date: "2026-05"                  # "YYYY-MM" 또는 월을 모르면 "YYYY"
+#     photos:                          # 첫 번째 사진이 대표(cover) 사진. 여러 장이면 클릭해서 넘겨 봅니다
+#       - 2026-05-teachers-day-1.jpg
+#       - 2026-05-teachers-day-2.jpg
+#     cover_position: "center 60%"     # (선택) 대표 사진을 4:3으로 자를 때 보일 위치. 기본은 가운데
+#
+# 이벤트 삭제: 해당 항목을 지우고, 다른 곳에서 쓰지 않는 사진 파일은 지워도 됩니다.
+
+- title: 스승의 날
+  date: "2022-05"
+  photos:
+    - lablife-01.jpg
+  cover_position: "center 60%"
+
+- title: ALTA 학회
+  date: "2022"
+  photos:
+    - lablife-02.jpg
+    - lablife-03.jpg
+
+- title: 겨울방학 연구참여 프로그램
+  date: "2022"
+  photos:
+    - lablife-04.jpg
+    - lablife-05.jpg
+
+- title: 연구실 미팅
+  date: "2021-03"
+  photos:
+    - lablife-06.jpg
+
+- title: 구룡포
+  date: "2021-02"
+  photos:
+    - lablife-08.jpg
+    - lablife-07.jpg
+
+- title: 기념사진
+  date: "2019"
+  photos:
+    - lablife-09.jpg
+
+- title: 봄 회식
+  date: "2019"
+  photos:
+    - lablife-10.jpg
+
+- title: 신년회 회식
+  date: "2019"
+  photos:
+    - lablife-11.jpg
+
+- title: ICAMD 참석 및 Best Poster Award 수상 (송수범)
+  date: "2017-12"
+  photos:
+    - lablife-12.jpg
+  cover_position: "center 60%"
+
+- title: 송년회 회식
+  date: "2017"
+  photos:
+    - lablife-13.jpg
