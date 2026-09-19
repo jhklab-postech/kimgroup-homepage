@@ -34,6 +34,8 @@
   --color-on-secondary-muted: color-mix(in srgb, var(--color-on-secondary) 72%, var(--color-secondary));
   --color-selection:          color-mix(in srgb, var(--color-primary) 20%, var(--color-bg));
   --color-shadow:             color-mix(in srgb, var(--color-text) 10%, transparent);
+  --color-avatar-bg:          var(--color-border);                                          /* 사진 없는 사람: 원형 배경 */
+  --color-avatar-fg:          color-mix(in srgb, var(--color-muted) 55%, var(--color-bg));  /* 사진 없는 사람: 머리·어깨 */
 
   /* ── 2. 글꼴 ─────────────────────────────────────────────── */
   --font-serif: 'EB Garamond', Georgia, serif;  /* 제목, 큰 숫자 */

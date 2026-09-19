@@ -19,6 +19,20 @@
 
 ---
 
+## v1.2.1 — 2026-09-19 · Current Members 갱신, 사진 없는 구성원용 기본 모양
+- **구성원 변경** (`_data/members.yml`)
+  - 뺐음: Dongwon Seo
+  - 추가: Wootack Lim, Seunghyun Mun, Myeongsoo Seo (모두 Graduate Student)
+  - 홈의 Current Members 숫자는 10 → 12로 자동으로 바뀝니다.
+  - Dongwon Seo의 사진 파일 `assets/img/people/dongwon-seo.jpg`는 저장소에 그대로 두었습니다.
+- **기본 사람 모양:** 사진(`image`)이 없는 구성원과 졸업생에게 원형 배경에 머리·어깨 모양을 표시합니다.
+  - 사진과 같은 크기의 틀을 씁니다.
+  - 파일: `_includes/person-placeholder.liquid`
+  - 색: `tokens.css`의 `--color-avatar-bg` / `--color-avatar-fg`
+- **바뀐 파일**
+  - 새 파일: `_includes/person-placeholder.liquid`
+  - 수정: `_data/members.yml`, `_layouts/members.liquid`, `_layouts/alumni.liquid`, `assets/css/tokens.css`, `assets/css/main.css`, `docs/CONTENT_MODEL.md`, `README.md`, `CHANGELOG.md`
+
 ## v1.2 — 2026-09-19 · 콘텐츠·디자인 구조 정리 (화면 변화 없음)
 
 AI가 수정하기 쉽고 나중에 관리자 페이지(CMS)를 붙이기 쉽도록 구조만 정리했습니다. 화면은 그대로입니다.

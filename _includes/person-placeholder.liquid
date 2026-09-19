@@ -1,0 +1,6 @@
+{%- comment -%}
+  사진이 없는 사람에게 보여 주는 기본 사람 모양 (원형 배경 + 머리·어깨).
+  색은 tokens.css의 --color-avatar-bg / --color-avatar-fg, 크기는 main.css의 .avatar-placeholder
+  사용: {% include person-placeholder.liquid name=m.name %}
+{%- endcomment -%}
+<svg class="avatar-placeholder" viewBox="0 0 120 152" preserveAspectRatio="xMinYMid meet" role="img" aria-label="{{ include.name | escape }}"><circle class="avatar-bg" cx="60" cy="76" r="60"/><circle class="avatar-fg" cx="60" cy="64" r="21"/><path class="avatar-fg" d="M20.3 121C26 102 42 92 60 92S94 102 99.7 121A60 60 0 0 1 20.3 121Z"/></svg>

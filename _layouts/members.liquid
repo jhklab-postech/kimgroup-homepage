@@ -8,6 +8,8 @@ layout: page
     <h2 class="name">{{ m.name | escape }}</h2>
     {%- if m.image %}
     <img src="{{ m.image | prepend: '/assets/img/people/' | relative_url }}" alt="{{ m.name | escape }}">
+    {%- else %}
+    {% include person-placeholder.liquid name=m.name %}
     {%- endif %}
     <p class="meta">{{ m.role | escape }}{% if m.email %}<br>{{ site.data.strings.people.email | escape }} {{ m.email | escape }}{% endif %}</p>
   </div>

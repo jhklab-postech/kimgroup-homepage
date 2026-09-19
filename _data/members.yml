@@ -7,7 +7,7 @@
 #   - name: Gildong Hong
 #     role: Graduate Student
 #     email: gildong (at) postech.ac.kr
-#     image: gildong-hong.jpg
+#     image: gildong-hong.jpg   # (선택) 비워 두면 기본 사람 모양이 표시됩니다
 #     aliases: [G. Hong]      # (선택) 논문에 다른 표기로 적힌 이름
 #
 # 졸업하면 이 파일에서 지우고 _data/alumni.yml 로 옮깁니다.
@@ -57,7 +57,14 @@
   email: junseok.lee (at) postech.ac.kr
   image: junseok-lee.jpg
 
-- name: Dongwon Seo
+- name: Wootack Lim
   role: Graduate Student
-  email: tjdhddnjs994 (at) postech.ac.kr
-  image: dongwon-seo.jpg
+  email: ut9797 (at) postech.ac.kr
+
+- name: Seunghyun Mun
+  role: Graduate Student
+  email: munsh1028 (at) postech.ac.kr
+
+- name: Myeongsoo Seo
+  role: Graduate Student
+  email: myeongsooseo (at) postech.ac.kr

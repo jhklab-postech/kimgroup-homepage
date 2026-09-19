@@ -324,7 +324,7 @@ a.stat:hover .stat-label::after, a.stat:focus-visible .stat-label::after { opaci
   border: var(--border-width) solid var(--color-border); border-radius: var(--radius-md);
 }
 .member .name { font: var(--weight-regular) var(--text-name) var(--font-serif); color: var(--color-text); margin: 0 0 var(--space-5); }
-.member img {
+.member img, .member .avatar-placeholder {
   width: 100%; max-width: 259px; height: 245px;
   object-fit: contain; object-position: left center;
   border-radius: var(--radius-sm);
@@ -338,7 +338,11 @@ a.stat:hover .stat-label::after, a.stat:focus-visible .stat-label::after { opaci
   background: var(--color-surface);
   border: var(--border-width) solid var(--color-border); border-radius: var(--radius-md);
 }
-.alum img { flex: 0 0 auto; width: 166px; border-radius: var(--radius-sm); }
+.alum img, .alum .avatar-placeholder { flex: 0 0 auto; width: 166px; border-radius: var(--radius-sm); }
+
+/* 사진이 없는 사람의 기본 모양 (_includes/person-placeholder.liquid). 크기는 사진과 같은 틀을 씀 */
+.avatar-bg { fill: var(--color-avatar-bg); }
+.avatar-fg { fill: var(--color-avatar-fg); }
 .alum .info { font-size: var(--text-body); color: var(--color-muted); line-height: 1.7; }
 .alum .name { color: var(--color-text); }
 .alum .info .name { font-weight: var(--weight-bold); }
@@ -395,7 +399,7 @@ a.stat:hover .stat-label::after, a.stat:focus-visible .stat-label::after { opaci
   .hero h1 { font-size: var(--text-display-md); }
   .research-card { padding: 22px; }
   .site-footer { margin: 0 var(--gutter); }
-  .member img { height: 210px; }
+  .member img, .member .avatar-placeholder { height: 210px; }
 }
 
 @media (max-width: 767px) {
@@ -450,7 +454,7 @@ a.stat:hover .stat-label::after, a.stat:focus-visible .stat-label::after { opaci
   .exp-row .when { text-align: left; }
   .members-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
   .member { padding: var(--space-4); }
-  .member img { height: 200px; }
+  .member img, .member .avatar-placeholder { height: 200px; }
   .member .name { font-size: var(--text-name-sm); }
   .alum { flex-direction: column; align-items: flex-start; gap: var(--space-5); }
   .gallery { grid-template-columns: 1fr; }
@@ -463,7 +467,7 @@ a.stat:hover .stat-label::after, a.stat:focus-visible .stat-label::after { opaci
   .slideshow .nav-numbers { gap: 5px; }
   .slideshow .nav-numbers button { width: 31px; }
   .members-grid { grid-template-columns: 1fr; }
-  .member img { height: 260px; }
+  .member img, .member .avatar-placeholder { height: 260px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

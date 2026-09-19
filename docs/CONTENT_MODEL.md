@@ -52,7 +52,7 @@ AI에게 수정을 요청할 때나, 나중에 관리자 페이지(CMS)를 붙�
 |---|---|---|
 | **name** | 문자열 | 화면에 표시되는 이름. 논문 저자 굵게 표시의 기준 |
 | aliases | 문자열 목록 | 논문에 다른 표기로 적힌 이름 (예: `[Su-Beom Song]`) |
-| image | 파일 이름 | `assets/img/people/` |
+| image | 파일 이름 | `assets/img/people/`. 비워 두면 기본 사람 모양이 표시됨 (`_includes/person-placeholder.liquid`, 색은 `--color-avatar-*`) |
 | email | 문자열 | 표시용 (예: `name (at) postech.ac.kr`) |
 
 - **PI** `_data/pi.yml` (항목 1개)
