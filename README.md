@@ -35,7 +35,7 @@ Jekyll(al-folio 방식 콘텐츠 관리) + GitHub Pages 자동 배포.
   email: gildong (at) postech.ac.kr
   image: gildong-hong.jpg
 ```
-홈의 Current Members 숫자는 자동으로 바뀝니다.
+홈의 Current Members 숫자는 자동으로 바뀝니다. 사진이 아직 없으면 `image:` 줄을 빼면 됩니다. 그러면 기본 사람 모양이 표시됩니다.
 
 ### 새 논문
 `_bibliography/papers.bib` **맨 위**에 추가합니다. 번호, 연도 구분, 홈의 Publications 숫자는 자동입니다.
