@@ -19,6 +19,37 @@
 
 ---
 
+## v1.3 — 2026-09-19 · Lab Life 이벤트 갤러리
+
+Lab Life의 배치만 바꿨습니다. 글꼴, 간격, 색은 그대로입니다.
+
+### 사진 단위에서 이벤트 단위로
+- **데이터:** `_data/lablife.yml`을 사진 13장 목록에서 **이벤트 10개**(`title`, `date`, `photos`, 선택 `cover_position`)로 바꿨습니다.
+  - 기존 캡션을 기준으로 같은 행사 사진을 묶었습니다 (ALTA 학회, 겨울방학 연구참여 프로그램, 구룡포는 각 2장).
+  - 날짜는 캡션에 적힌 정보만 썼습니다.
+    - 스승의 날 → May 2022
+    - ICAMD → Dec 2017 (사진 속 현수막 "December 5~8, 2017")
+    - 월을 알 수 없는 이벤트는 연도만 표시합니다.
+  - 구룡포는 가로 사진(`lablife-08`)을 대표 사진으로 했습니다.
+  - 세로 사진이 대표인 스승의 날과 ICAMD는 인물이 보이도록 자르는 위치를 지정했습니다.
+
+### 규칙적인 갤러리
+- **정렬과 묶음:** 날짜 최신순으로 자동 정렬하고, 연도별 제목(2022, 2021, 2019, 2017)으로 묶습니다 (`_pages/lab-life.md`의 `group_by_year`).
+- **카드:** 대표 사진은 모두 **4:3, `object-fit: cover`**입니다. 그 아래 같은 위치에 날짜(작은 대문자 라벨)와 제목(최대 2줄)을 둡니다.
+  - 카드 테두리와 그림자는 쓰지 않았습니다.
+- **여러 장 표시:** 사진이 여러 장인 이벤트는 대표 사진 오른쪽 아래에 `+N`을 표시합니다.
+- **열 수:** 데스크톱 3열, 태블릿(1000px 이하) 2열, 모바일(767px 이하) 1열
+- **사진 보기 창(lightbox):** 원본 비율로 표시합니다.
+  - 넘기기: ←/→ 키, 좌우 버튼, 터치 밀기
+  - 닫기: Esc, 바깥 클릭, 닫기 버튼
+  - 닫으면 누른 카드로 포커스가 돌아갑니다.
+  - JS가 없으면 대표 사진 파일이 바로 열립니다.
+- **새 디자인 값** (`tokens.css`): `--color-overlay`, `--color-on-overlay(-muted)`, `--color-badge-bg`, `--radius-pill`
+- **새 화면 문구** (`strings.yml`): `common.months`, `lablife.*`
+
+### 바뀐 파일
+- **수정:** `_data/lablife.yml`, `_data/strings.yml`, `_layouts/gallery.liquid`, `_pages/lab-life.md`, `assets/css/tokens.css`, `assets/css/main.css`, `assets/js/site.js`, `docs/CONTENT_MODEL.md`, `README.md`, `CHANGELOG.md`
+
 ## v1.2.1 — 2026-09-19 · Current Members 갱신, 사진 없는 구성원용 기본 모양
 - **구성원 변경** (`_data/members.yml`)
   - 뺐음: Dongwon Seo
