@@ -1,12 +1,68 @@
 ---
 layout: page
 ---
-{%- comment -%} Lab Life 사진은 _data/lablife.yml 에서 수정합니다. 적힌 순서대로 표시됩니다. {%- endcomment %}
-<div class="gallery">
-  {%- for photo in site.data.lablife %}
-  <figure>
-    <img src="{{ photo.image | prepend: '/assets/img/lab-life/' | relative_url }}" alt="{{ photo.caption | escape }}"{% if forloop.index > 2 %} loading="lazy"{% endif %}>
-    <figcaption>{{ photo.caption | escape }}</figcaption>
+{%- comment -%}
+  Lab Life 이벤트 갤러리 틀. 이벤트 데이터는 _data/lablife.yml 에서만 관리합니다.
+  - 정렬: date 최신순. 날짜가 같으면 데이터 파일 순서 ("YYYY-MM"이 같은 해의 "YYYY"보다 먼저)
+  - 연도 제목: _pages/lab-life.md 의 group_by_year: true
+  - 카드: 4:3 대표 사진(첫 번째 사진) + 날짜 + 제목. 사진이 여러 장이면 "+N" 표시
+  - 클릭하면 아래 <dialog class="lightbox">에서 원본 비율로 넘겨 봅니다 (site.js)
+{%- endcomment -%}
+{%- assign events = site.data.lablife -%}
+{%- assign t = site.data.strings.lablife -%}
+{%- assign months = site.data.strings.common.months -%}
+{%- comment -%} 안정 정렬용 키: "날짜!(1000-순번)!순번" 을 문자열로 정렬해 뒤집음 {%- endcomment -%}
+{%- capture keys -%}
+  {%- for e in events -%}{{ e.date }}!{{ 1000 | minus: forloop.index }}!{{ forloop.index0 }}{%- unless forloop.last -%}|{%- endunless -%}{%- endfor -%}
+{%- endcapture -%}
+{%- assign sorted_keys = keys | split: '|' | sort | reverse -%}
+{%- assign current_year = '' -%}
+{%- for key in sorted_keys -%}
+  {%- assign i = key | split: '!' | last | plus: 0 -%}
+  {%- assign e = events[i] -%}
+  {%- assign date_parts = e.date | append: '' | split: '-' -%}
+  {%- assign year = date_parts[0] -%}
+  {%- if page.group_by_year and year != current_year -%}
+    {%- unless forloop.first %}
+</div></section>
+    {%- endunless %}
+<section class="event-year" aria-labelledby="year-{{ year }}">
+<h2 class="event-year-heading" id="year-{{ year }}">{{ year }}</h2>
+<div class="event-grid">
+    {%- assign current_year = year -%}
+  {%- elsif forloop.first %}
+<div class="event-grid">
+  {%- endif -%}
+  {%- capture date_label -%}
+    {%- if date_parts.size > 1 -%}{%- assign m = date_parts[1] | plus: 0 | minus: 1 -%}{{ months[m] }} {{ year }}{%- else -%}{{ year }}{%- endif -%}
+  {%- endcapture -%}
+  {%- assign photo_urls = '' | split: '' -%}
+  {%- for p in e.photos -%}
+    {%- assign url = p | prepend: '/assets/img/lab-life/' | relative_url -%}
+    {%- assign photo_urls = photo_urls | push: url -%}
+  {%- endfor -%}
+  {%- assign photo_count = e.photos | size %}
+  <article class="event">
+    <a class="event-cover" href="{{ photo_urls[0] }}" data-title="{{ e.title | escape }}" data-photos="{{ photo_urls | jsonify | escape }}" aria-label="{{ e.title | escape }}, {{ date_label }}, {{ photo_count }} {{ t.photos | escape }}">
+      <img src="{{ photo_urls[0] }}" alt="{{ e.title | escape }}" loading="lazy"{% if e.cover_position %} style="object-position: {{ e.cover_position | escape }}"{% endif %}>
+      {%- if photo_count > 1 %}
+      <span class="event-count" aria-hidden="true">+{{ photo_count | minus: 1 }}</span>
+      {%- endif %}
+    </a>
+    <p class="event-date"><time datetime="{{ e.date }}">{{ date_label }}</time></p>
+    <h3 class="event-title">{{ e.title | escape }}</h3>
+  </article>
+  {%- if forloop.last %}
+</div>{% if page.group_by_year %}</section>{% endif %}
+  {%- endif -%}
+{%- endfor %}
+
+<dialog class="lightbox" aria-label="{{ t.gallery | escape }}">
+  <figure class="lightbox-figure">
+    <img class="lightbox-image" alt="">
+    <figcaption class="lightbox-caption"><span class="lightbox-title"></span><span class="lightbox-count"></span></figcaption>
   </figure>
-  {%- endfor %}
-</div>
+  <button class="lightbox-button lightbox-close" type="button" aria-label="{{ t.close | escape }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="lightbox-button lightbox-prev" type="button" aria-label="{{ t.previous | escape }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="lightbox-button lightbox-next" type="button" aria-label="{{ t.next | escape }}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+</dialog>
