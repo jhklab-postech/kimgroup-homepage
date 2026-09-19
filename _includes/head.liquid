@@ -5,7 +5,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=EB+Garamond:wght@400;500&amp;display=swap" rel="stylesheet">
+{%- comment -%} 색은 tokens.css 한 곳에서만 정의합니다 (순서: 토큰 → 기본 구조 → 디자인) {%- endcomment %}
+<link rel="stylesheet" href="{{ '/assets/css/tokens.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/base.css' | relative_url }}">
-<link rel="stylesheet" href="{{ '/assets/css/bmol-style.css' | relative_url }}">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23faff69'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-size='46' font-family='Georgia' fill='%230a0a0a'%3EK%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+<link rel="icon" type="image/svg+xml" href="{{ '/assets/img/favicon.svg' | relative_url }}">
 <script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>

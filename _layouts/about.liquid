@@ -21,6 +21,37 @@ layout: default
 <div class="slideshow" id="slideshow"><div class="frame">{% for s in slides %}<img src="{{ s.image | prepend: '/assets/img/highlights/' | relative_url }}" alt="{% if s.alt %}{{ s.alt | escape }}{% else %}Quantum materials research highlight {{ forloop.index }}{% endif %}"{% if forloop.first %} class="active"{% else %} loading="lazy"{% endif %}>{% endfor %}</div><div class="slideshow-controls"><div class="nav-numbers" aria-label="Choose research image"></div><button class="pause-slides" aria-label="Pause slideshow">Pause</button></div></div>
 <p class="visual-caption">{{ page.highlights_caption | escape }}</p></div>
 </section>
+{%- comment -%}
+  숫자 통계. 항목은 _pages/about.md 의 stats: 에서 정하고, 숫자는 데이터에서 자동으로 계산합니다.
+  source: publications → _bibliography/papers.bib 항목 수 / members → _data/members.yml 인원 수
+          alumni → _data/alumni.yml / projects → _projects/ 연구 주제 수
+{%- endcomment -%}
+{%- if page.stats %}
+{%- capture pub_total -%}{% bibliography_count %}{%- endcapture %}
+<section class="lab-stats" aria-label="Kim Group at a glance">
+  {%- for s in page.stats %}
+  {%- case s.source -%}
+    {%- when 'publications' -%}{%- assign value = pub_total | strip | plus: 0 -%}
+    {%- when 'members' -%}{%- assign value = site.data.members | size -%}
+    {%- when 'alumni' -%}{%- assign value = site.data.alumni | size -%}
+    {%- when 'projects' -%}{%- assign value = site.projects | size -%}
+    {%- else -%}{%- assign value = 0 -%}
+  {%- endcase -%}
+  {%- if s.link %}
+  <a class="stat" href="{{ s.link | relative_url }}" aria-label="{{ value }} {{ s.label | escape }}">
+  {%- else %}
+  <div class="stat">
+  {%- endif %}
+    <span class="stat-value" data-count="{{ value }}">{{ value }}</span>
+    <span class="stat-label">{{ s.label | escape }}</span>
+  {%- if s.link %}
+  </a>
+  {%- else %}
+  </div>
+  {%- endif %}
+  {%- endfor %}
+</section>
+{%- endif %}
 {%- assign rs = page.research_section %}
 <section class="research-teaser"><div class="section-heading"><div><p class="eyebrow">{{ rs.eyebrow | escape }}</p><h2>{% for line in rs.title %}{{ line | escape }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}</h2></div><a class="text-link" href="{{ '/research.html' | relative_url }}">{{ rs.link_label | escape }}</a></div>
 <div class="research-cards">

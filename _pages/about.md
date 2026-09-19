@@ -26,6 +26,18 @@ hero:
 # 슬라이드 아래 설명 (슬라이드 이미지는 _data/highlights.yml)
 highlights_caption: Exploring light–matter interactions in atomically thin materials.
 
+# ── 숫자 통계 (Hero 아래) ──────────────────────────────────
+# 숫자는 적지 않습니다. source에 따라 자동 계산:
+#   publications = papers.bib 항목 수, members = members.yml 인원 수
+#   (alumni, projects 도 사용 가능)
+stats:
+  - label: Publications
+    source: publications
+    link: /publications.html
+  - label: Current Members
+    source: members
+    link: /current-members.html
+
 # ── 연구 카드 영역 (카드 내용은 _projects/*.md) ─────────────
 research_section:
   eyebrow: Research
