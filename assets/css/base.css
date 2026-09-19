@@ -1,24 +1,22 @@
 /* ============================================================
-   JHK Lab (Kim Group at POSTECH) — 공용 스타일시트
-   포인트 컬러: #5199A8 (hover #5CB0C2, active #44818E)
-   텍스트: #484848 / 배경: #FFFFFF, #F9F9F9
-   글꼴: Raleway(메뉴·제목), Lora(일부 본문) — index.html에서 Google Fonts 로드
+   Kim Group at POSTECH — 기본 구조 스타일 (기존 Weebly 재현본에서 이어 온 레이아웃)
+   색은 tokens.css의 변수만 사용합니다. 세부 디자인은 style.css가 덮어씁니다.
    ============================================================ */
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  background: #ffffff;
-  color: #484848;
+  background: var(--color-bg);
+  color: var(--color-text);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   line-height: 1.6;
 }
 
-a { color: #5199A8; text-decoration: none; }
-a:hover { color: #5CB0C2; }
-a:active { color: #44818E; }
+a { color: var(--color-primary); text-decoration: none; }
+a:hover { color: var(--color-primary-hover); }
+a:active { color: var(--color-primary-hover); }
 
 img { max-width: 100%; height: auto; }
 
@@ -37,7 +35,7 @@ img { max-width: 100%; height: auto; }
   flex: 1;
   max-width: 160px;
   height: 1px;
-  background: #bbbbbb;
+  background: var(--color-border);
   margin: 0 30px;
 }
 .topnav ul {
@@ -56,11 +54,11 @@ img { max-width: 100%; height: auto; }
   font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #7f7f7f;
+  color: var(--color-muted);
   white-space: nowrap;
 }
-.topnav li > a:hover { color: #484848; background: #f5f5f5; }
-.topnav li.current > a { color: #484848; background: #f5f5f5; }
+.topnav li > a:hover { color: var(--color-text); background: var(--color-surface); }
+.topnav li.current > a { color: var(--color-text); background: var(--color-surface); }
 
 /* PEOPLE 드롭다운 */
 .topnav li .submenu {
@@ -70,9 +68,9 @@ img { max-width: 100%; height: auto; }
   left: 0;
   z-index: 20;
   min-width: 210px;
-  background: #ffffff;
-  border: 1px solid #e5e5e5;
-  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 6px var(--color-shadow);
   list-style: none;
   margin: 0;
   padding: 4px 0;
@@ -85,9 +83,9 @@ img { max-width: 100%; height: auto; }
   font-family: 'Raleway', Arial, sans-serif;
   font-size: 12px;
   letter-spacing: 1px;
-  color: #7f7f7f;
+  color: var(--color-muted);
 }
-.topnav .submenu a:hover { color: #484848; background: #f5f5f5; }
+.topnav .submenu a:hover { color: var(--color-text); background: var(--color-surface); }
 
 /* 모바일 햄버거 */
 .nav-toggle {
@@ -101,7 +99,7 @@ img { max-width: 100%; height: auto; }
   display: block;
   width: 24px;
   height: 2px;
-  background: #484848;
+  background: var(--color-text);
   margin: 5px 0;
 }
 
@@ -114,7 +112,7 @@ img { max-width: 100%; height: auto; }
 
 .banner-image { text-align: center; margin-bottom: 40px; }
 
-h1, h2, h3 { color: #2a2a2a; line-height: 1.35; }
+h1, h2, h3 { color: var(--color-text); line-height: 1.35; }
 .section-title {
   font-size: 22px;
   font-weight: bold;
@@ -125,11 +123,11 @@ h1, h2, h3 { color: #2a2a2a; line-height: 1.35; }
   font-weight: bold;
   margin: 0 0 20px;
 }
-.body-text { font-size: 16px; color: #2a2a2a; }
+.body-text { font-size: 16px; color: var(--color-text); }
 
 hr.styled-hr {
   border: 0;
-  border-top: 1px solid #d9d9d9;
+  border-top: 1px solid var(--color-border);
   margin: 45px 0;
 }
 
@@ -148,7 +146,7 @@ hr.styled-hr {
   width: 100%;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: #ffffff;
+  background: var(--color-bg);
 }
 .slideshow .frame img {
   position: absolute;
@@ -168,27 +166,27 @@ hr.styled-hr {
 }
 .slideshow .nav-numbers button {
   border: 0;
-  background: #9b9b9b;
-  color: #ffffff;
+  background: var(--color-muted);
+  color: var(--color-bg);
   font-size: 11px;
   width: 22px;
   height: 20px;
   cursor: pointer;
 }
-.slideshow .nav-numbers button:hover { background: #5CB0C2; }
-.slideshow .nav-numbers button.active { background: #484848; }
+.slideshow .nav-numbers button:hover { background: var(--color-primary-hover); }
+.slideshow .nav-numbers button.active { background: var(--color-text); }
 
 /* Lab News */
-.lab-news p { font-size: 16px; color: #2a2a2a; margin: 0 0 22px; }
+.lab-news .news-row p { font-size: 16px; color: var(--color-text); margin: 0 0 22px; }
 
 /* ---------- 푸터 ---------- */
-.footer-dark { background: #605b5b; height: 220px; }
-.footer-light { background: #f9f9f9; height: 170px; }
+.footer-dark { background: var(--color-secondary); height: 220px; }
+.footer-light { background: var(--color-surface); height: 170px; }
 
 /* ---------- Research ---------- */
 .research h1 { font-size: 30px; margin: 0 0 25px; }
 .research h2 { font-size: 22px; margin: 45px 0 18px; }
-.research p { font-size: 15px; color: #2a2a2a; }
+.research p { font-size: 15px; color: var(--color-text); }
 .research .related { margin-top: 20px; }
 .research .related p { margin: 3px 0; font-size: 14px; }
 .research .related .label { font-weight: bold; }
@@ -197,9 +195,9 @@ hr.styled-hr {
 .pi-top { display: flex; gap: 40px; align-items: flex-start; }
 .pi-top .photo { flex: 0 0 300px; }
 .pi-top .info h1 { font-size: 30px; margin: 0 0 20px; }
-.pi-top .info p { font-size: 16px; color: #2a2a2a; margin: 0 0 18px; }
-.pi-section-title { font-size: 22px; font-style: italic; font-weight: bold; color: #2a2a2a; margin: 40px 0 18px; }
-.exp-row { display: grid; grid-template-columns: 220px 1fr 150px; gap: 10px; font-size: 16px; color: #2a2a2a; margin: 4px 0; }
+.pi-top .info p { font-size: 16px; color: var(--color-text); margin: 0 0 18px; }
+.pi-section-title { font-size: 22px; font-style: italic; font-weight: bold; color: var(--color-text); margin: 40px 0 18px; }
+.exp-row { display: grid; grid-template-columns: 220px 1fr 150px; gap: 10px; font-size: 16px; color: var(--color-text); margin: 4px 0; }
 .exp-row .role { font-weight: bold; }
 .exp-row .when { text-align: right; }
 
@@ -210,24 +208,24 @@ hr.styled-hr {
   gap: 45px 30px;
   text-align: center;
 }
-.member .name { font-family: 'Lora', Georgia, serif; font-size: 21px; color: #2a2a2a; margin: 0 0 14px; font-weight: 400; }
+.member .name { font-family: 'Lora', Georgia, serif; font-size: 21px; color: var(--color-text); margin: 0 0 14px; font-weight: 400; }
 .member img { width: 100%; max-width: 259px; }
-.member .meta { font-family: 'Lora', Georgia, serif; font-size: 15px; color: #6b6b6b; margin: 12px 0 0; line-height: 1.8; }
+.member .meta { font-family: 'Lora', Georgia, serif; font-size: 15px; color: var(--color-muted); margin: 12px 0 0; line-height: 1.8; }
 .member.center-last { grid-column: 2; }
 
 /* ---------- Alumni ---------- */
 .alum { display: flex; gap: 35px; align-items: center; margin-bottom: 50px; }
 .alum img { flex: 0 0 auto; width: 166px; }
-.alum .info { font-size: 16px; color: #2a2a2a; line-height: 1.7; }
+.alum .info { font-size: 16px; color: var(--color-text); line-height: 1.7; }
 .alum .info .name { font-weight: bold; }
 .alum .info .present { margin-top: 14px; }
 
 /* ---------- Publications ---------- */
 .publications { max-width: 860px; margin: 0 auto; }
-.pub-year { font-size: 28px; font-style: italic; font-weight: bold; color: #2a2a2a; margin: 55px 0 25px; }
+.pub-year { font-size: 28px; font-style: italic; font-weight: bold; color: var(--color-text); margin: 55px 0 25px; }
 .pub-year:first-of-type { margin-top: 0; }
-.pub { font-size: 13.5px; color: #2a2a2a; margin: 0 0 20px; line-height: 1.65; }
-.pub .journal, .pub a { color: #009291; }
+.pub { font-size: 13.5px; color: var(--color-text); margin: 0 0 20px; line-height: 1.65; }
+.pub .journal, .pub a { color: var(--color-primary); }
 .pub a:hover { text-decoration: underline; }
 
 /* ---------- Lab Life ---------- */
@@ -241,14 +239,14 @@ hr.styled-hr {
 .gallery figcaption {
   font-family: 'Raleway', Arial, sans-serif;
   font-size: 13px;
-  color: #7f7f7f;
+  color: var(--color-muted);
   letter-spacing: .5px;
   margin-top: 8px;
   text-align: center;
 }
 
 /* ---------- Positions ---------- */
-.positions p { font-size: 16px; color: #2a2a2a; text-align: justify; }
+.positions p { font-size: 16px; color: var(--color-text); text-align: justify; }
 
 /* ---------- 반응형 ---------- */
 @media (max-width: 767px) {
@@ -259,8 +257,8 @@ hr.styled-hr {
     display: none;
     flex-direction: column;
     gap: 0;
-    background: #ffffff;
-    border-bottom: 1px solid #e5e5e5;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
   }
   .topnav.open ul { display: flex; }
   .topnav li .submenu {
