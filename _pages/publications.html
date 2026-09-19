@@ -1,0 +1,16 @@
+---
+layout: page
+title: Publications
+permalink: /publications.html
+---
+{%- comment -%}
+  논문 목록은 _bibliography/papers.bib 에서 관리합니다. (새 논문은 파일 맨 위에 추가)
+  표시 형식은 _layouts/bib.liquid, 번호는 전체 편수에서 거꾸로 자동으로 매겨집니다.
+  2016년 이전 논문은 "2010 ~ 2016" 한 묶음으로 표시합니다.
+{%- endcomment -%}
+{%- capture pub_total -%}{% bibliography_count %}{%- endcapture -%}
+<section class="publications" style="counter-reset: pub {{ pub_total | strip | plus: 1 }}">
+{% bibliography --query @*[year>=2017] %}
+<h2 class="bibliography">2010 ~ 2016</h2>
+{% bibliography --query @*[year<=2016] --group_by none %}
+</section>
