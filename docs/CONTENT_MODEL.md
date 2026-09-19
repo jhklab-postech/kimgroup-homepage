@@ -94,6 +94,23 @@ AI에게 수정을 요청할 때나, 나중에 관리자 페이지(CMS)를 붙�
 | related | `papers.bib` 키 목록. 논문 제목과 학술지는 자동으로 표시되므로 다시 적지 않습니다 |
 | 본문 | 설명 문단 (Markdown) |
 
+### Lab Life 이벤트 `_data/lablife.yml` (목록, 1항목 = 이벤트 1개)
+
+| 항목 | 설명 |
+|---|---|
+| **title** | 이벤트 이름 |
+| **date** | `"YYYY-MM"` 또는 월을 모르면 `"YYYY"` |
+| **photos** | 사진 파일 이름 목록 (`assets/img/lab-life/`). **첫 번째가 대표 사진** |
+| cover_position | (선택) 대표 사진을 4:3으로 자를 때 보일 위치 (CSS `object-position`, 예: `"center 60%"`) |
+
+- 파일 안의 순서는 상관없습니다.
+  - 페이지에서 날짜 최신순으로 정렬합니다. 같은 해에서는 월이 있는 항목이 먼저 나옵니다.
+  - 날짜가 같으면 파일 순서대로 나옵니다.
+- `_pages/lab-life.md`의 `group_by_year: true`이면 연도별 제목으로 묶습니다.
+- 카드에는 대표 사진(4:3, 잘라서 채움), 날짜, 제목이 나옵니다.
+  - 사진이 여러 장이면 대표 사진 위에 `+N`을 표시합니다.
+  - 카드를 누르면 사진 보기 창(lightbox)에서 원본 비율로 넘겨 봅니다.
+
 ### 페이지 `_pages/*.md`
 - 공통 항목: **layout**, **title**, **permalink**
 - 페이지별 추가 항목
@@ -117,9 +134,9 @@ AI에게 수정을 요청할 때나, 나중에 관리자 페이지(CMS)를 붙�
 | 파일 | 형식 |
 |---|---|
 | `highlights.yml` | `[{image, alt}]`, 이미지는 `assets/img/highlights/` |
-| `lablife.yml` | `[{image, caption}]`, 이미지는 `assets/img/lab-life/` |
+| `lablife.yml` | Lab Life 이벤트 (위 형식 참고) |
 | `navigation.yml` | `[{title, url, children[]{title,url}}]` |
-| `strings.yml` | 화면 문구. 페이지별로 묶여 있음 (`common`, `home`, `research`, `people`, `pi`) |
+| `strings.yml` | 화면 문구. 페이지별로 묶여 있음 (`common`(월 이름 포함), `home`, `research`, `people`, `lablife`, `pi`) |
 
 ## 5. 디자인 토큰 (`assets/css/tokens.css`)
 
@@ -140,6 +157,7 @@ AI에게 수정을 요청할 때나, 나중에 관리자 페이지(CMS)를 붙�
 
 **CMS 설정에 대응시키는 방법**
 - `_news/`, `_projects/` → 폴더 컬렉션 (항목마다 파일 1개, 4장의 항목이 입력 필드)
+- `_data/lablife.yml` → 목록 입력 필드 (title, date, photos는 이미지 여러 장 입력, cover_position)
 - `_data/*.yml` → 파일 컬렉션 (목록 입력 필드)
 - `_pages/*.md` → 파일 컬렉션 (front matter 입력 필드 + 본문)
 - 이미지 → 각 유형 폴더(`assets/img/people/` 등)를 업로드 폴더로 지정
