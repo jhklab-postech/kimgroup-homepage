@@ -8,23 +8,17 @@
   - 동명이인을 굵게 표시하지 않으려면 bib 항목에 highlight_skip = {4} 처럼 저자 순번을 적습니다.
   - 논문 번호는 목록 순서대로 자동으로 매겨집니다 (CSS counter).
 {%- endcomment -%}
+{%- comment -%} 연구실 사람 이름 목록: 모든 사람 데이터가 같은 형식(name + aliases)이라 한 번에 모읍니다 {%- endcomment -%}
 {%- capture lab_names -%}
   |{{ site.data.pi.name }}|
   {%- for n in site.data.pi.aliases -%}{{ n }}|{%- endfor -%}
-  {%- for m in site.data.members -%}{{ m.name }}|{%- for n in m.aliases -%}{{ n }}|{%- endfor -%}{%- endfor -%}
-  {%- for m in site.data.alumni -%}{{ m.name }}|{%- for n in m.aliases -%}{{ n }}|{%- endfor -%}{%- endfor -%}
-  {%- for n in site.data.lab_authors -%}{{ n }}|{%- endfor -%}
+  {%- assign people_files = "members,alumni,lab_authors" | split: "," -%}
+  {%- for file in people_files -%}
+    {%- for m in site.data[file] -%}{{ m.name }}|{%- for n in m.aliases -%}{{ n }}|{%- endfor -%}{%- endfor -%}
+  {%- endfor -%}
 {%- endcapture -%}
 {%- assign skip = entry.highlight_skip | split: ',' -%}
-{%- capture venue -%}
-  {%- if entry.journal -%}
-    {{ entry.journal }}
-    {%- if entry.volume %} {{ entry.volume }}{%- if entry.number -%}({{ entry.number }}){%- endif -%}{%- endif -%}
-    {%- if entry.pages -%}, {{ entry.pages }}{%- elsif entry.note -%}, {{ entry.note }}{%- endif %} ({{ entry.year }})
-  {%- else -%}
-    {{ entry.note }}
-  {%- endif -%}
-{%- endcapture -%}
+{%- capture venue -%}{% include publication-venue.liquid entry=entry %}{%- endcapture -%}
 <div class="pub"><strong class="pub-title">{{ entry.title }}</strong><br>
 {%- for author in entry.author_array -%}
   {%- assign clean_last = author.last | remove: '*' | remove: '†' -%}

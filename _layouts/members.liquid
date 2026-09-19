@@ -9,7 +9,7 @@ layout: page
     {%- if m.image %}
     <img src="{{ m.image | prepend: '/assets/img/people/' | relative_url }}" alt="{{ m.name | escape }}">
     {%- endif %}
-    <p class="meta">{{ m.role | escape }}{% if m.email %}<br>Email: {{ m.email | escape }}{% endif %}</p>
+    <p class="meta">{{ m.role | escape }}{% if m.email %}<br>{{ site.data.strings.people.email | escape }} {{ m.email | escape }}{% endif %}</p>
   </div>
   {%- endfor %}
 </div>

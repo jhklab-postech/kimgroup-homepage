@@ -14,7 +14,7 @@ layout: page
     {%- endif %}
     {% for d in a.degrees %}{{ d | escape }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}
     {%- if a.present %}
-    <div class="present">Present: {{ a.present | escape }}</div>
+    <div class="present">{{ site.data.strings.people.present | escape }} {{ a.present | escape }}</div>
     {%- endif %}
   </div>
 </div>

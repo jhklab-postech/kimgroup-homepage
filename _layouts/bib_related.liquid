@@ -1,0 +1,8 @@
+---
+---
+{%- comment -%}
+  Research 페이지 "Related publications" 한 줄 형식 (jekyll-scholar 템플릿).
+  앞의 [1], [2] 번호는 CSS가 자동으로 붙입니다 (main.css의 .related-pub).
+{%- endcomment -%}
+{%- capture venue -%}{% include publication-venue.liquid entry=entry %}{%- endcapture -%}
+<p class="related-pub">{{ entry.title }}, <em>{{ venue }}</em>.</p>

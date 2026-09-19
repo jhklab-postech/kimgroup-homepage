@@ -2,8 +2,10 @@
 layout: page
 ---
 {%- comment -%}
-  Research 페이지. 소개 문단은 _pages/research.md, 연구 주제는 _projects/*.md 에서 수정합니다.
-  연구 주제 순서는 각 파일의 importance 값(작을수록 먼저)으로 정해집니다.
+  Research 페이지 틀. 소개 문단은 _pages/research.md, 연구 주제는 _projects/*.md 에서 수정합니다.
+  - 연구 주제 순서: 각 파일의 importance 값 (작을수록 먼저)
+  - Related publications: 각 주제의 related: 에 적은 papers.bib 키를 찾아 자동으로 표시합니다.
+    (논문 제목·학술지를 여기에 다시 적지 않습니다)
 {%- endcomment %}
 <h2 class="overview-heading">{{ page.overview_heading | escape }}</h2>
 {{ content }}
@@ -14,9 +16,9 @@ layout: page
 {{ p.content }}
 {%- if p.related %}
 <div class="related">
-  <p class="label">Related publications:</p>
-  {%- for r in p.related %}
-  <p>[{{ forloop.index }}] {{ r.title | escape }}, <em>{{ r.venue | escape }}</em>.</p>
+  <p class="label">{{ site.data.strings.research.related_publications | escape }}</p>
+  {%- for key in p.related %}
+  {% bibliography --query @*[key={{ key }}] --group_by none --template bib_related %}
   {%- endfor %}
 </div>
 {%- endif %}
