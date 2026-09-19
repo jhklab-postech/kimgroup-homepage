@@ -1,0 +1,71 @@
+# -----------------------------------------------------------------------------
+# 사이트 기본 정보
+# -----------------------------------------------------------------------------
+title: Kim Group at POSTECH
+description: Laboratory for Ultrafast Imaging and Spectroscopy of Quantum Materials, POSTECH
+lang: en
+timezone: Asia/Seoul
+
+# 배포 주소. baseurl은 GitHub Actions가 자동으로 넣어 주므로 비워 둡니다.
+# (학교 도메인을 연결해도 수정할 필요 없음)
+url: ""
+baseurl: ""
+
+# 상단 로고, 푸터에 쓰이는 연구실 정보
+lab:
+  short_name: KIM GROUP
+  institution: at POSTECH
+  full_name: Laboratory for Ultrafast Imaging and Spectroscopy of Quantum Materials
+  email: jonghwankim@postech.ac.kr
+  address:
+    - Materials Science & Engineering · POSTECH
+    - Pohang, Republic of Korea
+
+# -----------------------------------------------------------------------------
+# 콘텐츠 컬렉션 (al-folio 방식)
+#   _news/     : 홈 화면 Latest news
+#   _projects/ : Research 페이지 연구 주제 + 홈 화면 연구 카드
+# 두 컬렉션 모두 별도 페이지는 만들지 않고, 목록 화면에서만 사용합니다.
+# -----------------------------------------------------------------------------
+collections:
+  news:
+    output: false
+  projects:
+    output: false
+
+include: ["_pages"]
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .github
+
+# -----------------------------------------------------------------------------
+# Markdown
+# -----------------------------------------------------------------------------
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# -----------------------------------------------------------------------------
+# 논문 목록 (jekyll-scholar, al-folio와 같은 설정)
+#   _bibliography/papers.bib 를 읽어 _layouts/bib.liquid 형식으로 출력합니다.
+#   sort_by: none → bib 파일에 적힌 순서를 그대로 사용 (새 논문은 파일 맨 위에 추가)
+# -----------------------------------------------------------------------------
+plugins:
+  - jekyll-scholar
+
+scholar:
+  style: apa
+  locale: en
+  source: /_bibliography/
+  bibliography: papers.bib
+  bibliography_template: bib
+  bibtex_filters: [latex, smallcaps, superscript]
+  replace_strings: true
+  join_strings: true
+  sort_by: none
+  group_by: year
+  group_order: descending
