@@ -1,31 +1,31 @@
 /* ==========================================================================
-   Kim Group 디자인 토큰 (색상·글꼴)
-   사이트 전체 색은 이 파일에서만 정합니다. 다른 CSS에는 색상 값을 직접 쓰지 않습니다.
-   ① 기본 색 8개 + ② 띠·글자 대비 색만 바꾸면 전체 테마가 바뀝니다.
-   ③ 파생 색은 자동으로 계산되므로 고칠 필요가 없습니다.
-
-   색의 출처: 기존 Kim Group Weebly 홈페이지
-     - 포인트(링크·메뉴) 청록 #5199A8 / #44818E → primary (흰 배경 글자 대비 4.5:1을 넘도록 약간 진하게)
-     - 로고의 "at POSTECH" 라즈베리 #B8285F → accent
-     - 푸터 띠의 웜 그레이 #605B5B → secondary
-     - 배경 #FFFFFF / #F9F9F9, 제목 글자 #2A2A2A
+   Kim Group 디자인 토큰: 색상, 글꼴, 글자 크기, 간격, 모서리, 레이아웃, 움직임
+   디자인 값은 이 파일에서만 정합니다. main.css는 여기 있는 변수만 가져다 씁니다.
+   (여기 없는 값은 main.css의 각 컴포넌트 안에만 쓰이는 미세 간격입니다)
    ========================================================================== */
+
+/* 웹 글꼴 (글꼴을 바꾸면 아래 --font-serif / --font-sans도 함께 바꿉니다) */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=EB+Garamond:wght@400;500&display=swap");
+
 :root {
-  /* ① 기본 색 */
-  --color-primary:   #3D7C89;  /* 주요 색: 링크, 버튼, 현재 메뉴, 논문 연도, 강조 카드 */
-  --color-secondary: #605B5B;  /* 보조 색: 하단 Join 띠 같은 어두운 면 */
-  --color-accent:    #B8285F;  /* 강조 색: 로고 "at POSTECH", 작은 라벨, 숫자 통계, 스크롤 진행 바 */
+  /* ── 1. 색상 ───────────────────────────────────────────────
+     출처: 기존 Kim Group Weebly 홈페이지
+       링크 청록 #5199A8/#44818E → primary (흰 배경 글자 대비 4.5:1 이상이 되도록 약간 진하게)
+       로고 "at POSTECH" 라즈베리 #B8285F → accent
+       푸터 웜 그레이 #605B5B → secondary, 배경 #FFFFFF/#F9F9F9, 제목 #2A2A2A
+     ① 기본 색 8개 + ② 대비 색만 바꾸면 전체 테마가 바뀝니다. ③은 자동 계산입니다. */
+  --color-primary:   #3D7C89;  /* 링크, 버튼, 현재 메뉴, 논문 연도, 강조 카드 */
+  --color-secondary: #605B5B;  /* 하단 Join 띠 같은 어두운 면 */
+  --color-accent:    #B8285F;  /* 로고 "at POSTECH", 작은 라벨, 숫자 통계, 스크롤 진행 바 */
   --color-bg:        #FFFFFF;  /* 페이지 배경 */
   --color-surface:   #F5F7F7;  /* 카드·박스 배경 */
   --color-text:      #2A2A2A;  /* 본문·제목 글자 */
   --color-muted:     #646A6C;  /* 보조 글자 (설명, 날짜) */
   --color-border:    #E1E4E5;  /* 구분선, 테두리 */
 
-  /* ② 색 위에 올라가는 글자 색 */
-  --color-on-primary:   #FFFFFF;
-  --color-on-secondary: #FFFFFF;
+  --color-on-primary:   #FFFFFF;  /* ② primary 위의 글자 */
+  --color-on-secondary: #FFFFFF;  /* ② secondary 위의 글자 */
 
-  /* ③ 파생 색 (자동 계산 — 수정 불필요) */
   --color-primary-hover:      color-mix(in srgb, var(--color-primary) 82%, var(--color-text));
   --color-surface-hover:      color-mix(in srgb, var(--color-surface) 88%, var(--color-primary));
   --color-text-soft:          color-mix(in srgb, var(--color-text) 88%, var(--color-bg));
@@ -35,9 +35,100 @@
   --color-selection:          color-mix(in srgb, var(--color-primary) 20%, var(--color-bg));
   --color-shadow:             color-mix(in srgb, var(--color-text) 10%, transparent);
 
-  /* 글꼴 */
-  --font-serif: 'EB Garamond', Georgia, serif;
-  --font-sans:  Inter, Arial, sans-serif;
+  /* ── 2. 글꼴 ─────────────────────────────────────────────── */
+  --font-serif: 'EB Garamond', Georgia, serif;  /* 제목, 큰 숫자 */
+  --font-sans:  Inter, Arial, sans-serif;       /* 본문, 메뉴, 라벨 */
+
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* ── 3. 글자 크기 (역할별). -sm은 모바일(767px 이하), -md는 1000px 이하 ── */
+  --text-display:    clamp(42px, 5.2vw, 66px);  /* 홈 첫 화면 큰 제목 */
+  --text-display-md: 51px;
+  --text-display-sm: clamp(39px, 9vw, 56px);
+  --text-display-xs: 41px;                      /* 440px 이하 */
+  --text-h1:         56px;  /* 각 페이지 제목 */
+  --text-h1-sm:      42px;
+  --text-h2:         42px;  /* 홈 섹션 제목 */
+  --text-h2-sm:      36px;
+  --text-h3:         32px;  /* Research 주제 제목, PI 페이지 소제목 */
+  --text-h3-sm:      29px;
+  --text-band:       36px;  /* Join 띠 제목 */
+  --text-band-sm:    32px;
+  --text-person:     40px;  /* PI 이름 */
+  --text-year:       35px;  /* 논문 연도 */
+  --text-card:       30px;  /* 연구 카드 제목 */
+  --text-name:       28px;  /* 구성원 이름 */
+  --text-name-sm:    25px;
+  --text-subtitle:   25px;  /* 첫 화면 부제 */
+  --text-subtitle-sm: 23px;
+  --text-stat:       60px;  /* 숫자 통계 */
+  --text-stat-sm:    46px;
+  --text-lead:       19px;  /* Positions 본문 */
+  --text-brand:      18px;  /* 상단 로고 */
+  --text-body:       16px;  /* 기본 본문 */
+  --text-body-sm:    15px;  /* 카드 설명, 소식 */
+  --text-ui:         14px;  /* 메뉴, 버튼, 보조 정보 */
+  --text-caption:    13px;  /* 날짜, 캡션, 푸터 */
+  --text-label:      12px;  /* 작은 대문자 라벨 */
+  --text-micro:      11px;  /* 카드 번호 등 */
+
+  --leading-tight:   1.08;  /* 제목 */
+  --leading-snug:    1.2;
+  --leading-normal:  1.5;   /* 라벨 */
+  --leading-relaxed: 1.6;
+  --leading-body:    1.65;  /* 본문 */
+  --leading-loose:   1.8;
+
+  --tracking-display: -.035em;  /* 첫 화면 큰 제목 */
+  --tracking-heading: -.025em;  /* 제목 */
+  --tracking-label:   .13em;    /* 대문자 라벨 */
+
+  /* ── 4. 간격 (자주 쓰는 값) ───────────────────────────────── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* ── 5. 레이아웃 ─────────────────────────────────────────── */
+  --container:       1140px;                                       /* 본문 최대 폭 */
+  --gutter:          24px;                                         /* 좌우 여백 */
+  --gutter-sm:       20px;                                         /* 모바일 좌우 여백 */
+  --page-max:        calc(var(--container) + 2 * var(--gutter));   /* 여백 포함 페이지 폭 (1188px) */
+  --header-height:    86px;
+  --header-height-sm: 76px;
+  --page-space-top:       64px;  /* 페이지 위·아래 여백 */
+  --page-space-bottom:    80px;
+  --page-space-top-sm:    35px;
+  --page-space-bottom-sm: 50px;
+  --home-space-top:       54px;
+  --section-space:        58px;  /* 홈 섹션 사이 */
+  --section-space-sm:     40px;
+
+  /* ── 6. 모서리·선 ────────────────────────────────────────── */
+  --radius-xs: 5px;   /* 작은 버튼 */
+  --radius-sm: 7px;   /* 버튼, 작은 사진, 드롭다운 */
+  --radius-md: 10px;  /* 카드, 사진 */
+  --radius-lg: 12px;  /* 큰 띠, PI 사진 */
+  --border-width: 1px;
+
+  /* ── 7. 움직임·겹침 순서 ─────────────────────────────────── */
+  --motion-fast:   .2s;  /* 버튼·카드 hover */
+  --motion-medium: .3s;
+  --motion-slow:   .8s;  /* 슬라이드 전환 */
+  --z-submenu:  20;
+  --z-header:   30;
+  --z-progress: 60;
+  --z-skip:     100;
 
   color-scheme: light;
 }
