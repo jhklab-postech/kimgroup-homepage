@@ -1,0 +1,37 @@
+# 화면 문구: 버튼, 라벨, 소제목처럼 페이지 틀에 고정으로 나오는 짧은 글입니다.
+# (연구실 정보·구성원·논문 같은 "콘텐츠"는 다른 데이터 파일에 있습니다)
+# 문구를 바꾸거나, 나중에 다른 언어 버전을 만들 때 이 파일만 고치면 됩니다.
+
+common:
+  at: at                                   # "Kim Group at POSTECH"
+  skip_to_content: Skip to content
+  main_navigation: Main navigation
+  open_menu: Open menu
+  close_menu: Close menu
+
+home:
+  directed_by: Directed by Prof.           # 뒤에 교수님 이름(_data/pi.yml)이 붙음
+  research_highlights: RESEARCH HIGHLIGHTS
+  image_alt: Quantum materials research highlight   # 설명이 없는 슬라이드 이미지. 뒤에 번호가 붙음
+  choose_image: Choose research image
+  show_image: Show research image          # 번호 버튼. 뒤에 번호가 붙음
+  pause: Pause
+  play: Play
+  pause_slideshow: Pause slideshow
+  play_slideshow: Play slideshow
+  explore_card: Explore the science →      # 연구 카드 아래 링크
+  at_a_glance: at a glance                 # 숫자 통계 영역 이름 (화면 읽기 프로그램용)
+
+research:
+  related_publications: "Related publications:"
+
+people:
+  email: "Email:"                          # Current Members 카드
+  present: "Present:"                      # Alumni 현재 소속
+
+pi:
+  office: "Office & lab :"
+  phone: "Phone :"
+  email: "Email :"
+  experience: Professional Experience
+  education: Education

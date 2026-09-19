@@ -1,8 +1,9 @@
 ---
 layout: page
 ---
-{%- comment -%} 교수님 정보는 _data/pi.yml 에서 수정합니다. {%- endcomment -%}
-{%- assign pi = site.data.pi %}
+{%- comment -%} 교수님 정보는 _data/pi.yml, 소제목·라벨은 _data/strings.yml (pi:) 에서 수정합니다. {%- endcomment -%}
+{%- assign pi = site.data.pi -%}
+{%- assign t = site.data.strings.pi %}
 <div class="pi-top">
   <div class="photo">
     <img src="{{ pi.image | prepend: '/assets/img/people/' | relative_url }}" alt="{{ pi.name | escape }}">
@@ -11,25 +12,25 @@ layout: page
     <h2>{{ pi.name | escape }}</h2>
     <p>{% for line in pi.address %}{{ line | escape }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}</p>
     {%- if pi.office %}
-    <p>Office &amp; lab : {{ pi.office | escape }}</p>
+    <p>{{ t.office | escape }} {{ pi.office | escape }}</p>
     {%- endif %}
     {%- if pi.phone %}
-    <p>Phone : {{ pi.phone | escape }}</p>
+    <p>{{ t.phone | escape }} {{ pi.phone | escape }}</p>
     {%- endif %}
     {%- if pi.email %}
-    <p>Email : {{ pi.email | escape }}</p>
+    <p>{{ t.email | escape }} {{ pi.email | escape }}</p>
     {%- endif %}
   </div>
 </div>
 
 <hr class="styled-hr">
 
-<h2 class="pi-section-title">Professional Experience</h2>
+<h2 class="pi-section-title">{{ t.experience | escape }}</h2>
 {%- for e in pi.experience %}
 <div class="exp-row"><span class="role">{{ e.role | escape }}</span><span>{{ e.organization | escape }}</span><span class="when">{{ e.period | escape }}</span></div>
 {%- endfor %}
 
-<h2 class="pi-section-title">Education</h2>
+<h2 class="pi-section-title">{{ t.education | escape }}</h2>
 {%- for e in pi.education %}
 <div class="exp-row"><span class="role"><strong>{{ e.degree | escape }}</strong> {{ e.detail | escape }}</span><span></span><span class="when">{{ e.date | escape }}</span></div>
 {%- endfor %}

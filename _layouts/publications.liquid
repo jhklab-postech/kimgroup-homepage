@@ -1,0 +1,19 @@
+---
+layout: page
+---
+{%- comment -%}
+  Publications 페이지 틀. 논문은 _bibliography/papers.bib 에서 관리합니다 (새 논문은 파일 맨 위에).
+  - 한 편의 표시 형식: _layouts/bib.liquid
+  - 번호: 전체 편수부터 거꾸로 자동 (main.css의 .pub-title)
+  - 오래된 논문 묶음: _pages/publications.md 의 archive: (until 연도까지를 label 제목 아래 한 묶음으로)
+{%- endcomment -%}
+{%- capture pub_total -%}{% bibliography_count %}{%- endcapture -%}
+<section class="publications" style="counter-reset: pub {{ pub_total | strip | plus: 1 }}">
+{%- if page.archive %}
+{% bibliography --query @*[year>{{ page.archive.until }}] %}
+<h2 class="bibliography">{{ page.archive.label | escape }}</h2>
+{% bibliography --query @*[year<={{ page.archive.until }}] --group_by none %}
+{%- else %}
+{% bibliography %}
+{%- endif %}
+</section>

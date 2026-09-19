@@ -1,16 +1,21 @@
+// 화면 문구는 HTML의 data-* 속성에서 읽습니다 (원본: _data/strings.yml). 이 파일에는 문구를 적지 않습니다.
+
+// 모바일 메뉴 열기/닫기
 const nav = document.querySelector('.topnav');
 const toggle = document.querySelector('.nav-toggle');
 toggle?.addEventListener('click', () => {
   const open = nav.classList.toggle('open');
   toggle.setAttribute('aria-expanded', String(open));
-  toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  toggle.setAttribute('aria-label', open ? toggle.dataset.labelClose : toggle.dataset.labelOpen);
 });
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && nav?.classList.contains('open')) {
     nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Open menu'); toggle.focus();
+    toggle.setAttribute('aria-label', toggle.dataset.labelOpen); toggle.focus();
   }
 });
+
+// 홈 연구 이미지 슬라이드
 const slides = [...document.querySelectorAll('#slideshow .frame img')];
 if (slides.length) {
   const controls = document.querySelector('.nav-numbers');
@@ -19,7 +24,7 @@ if (slides.length) {
   const buttons = slides.map((slide, i) => {
     const button = document.createElement('button');
     button.textContent = String(i + 1).padStart(2, '0');
-    button.setAttribute('aria-label', `Show research image ${i + 1}`);
+    button.setAttribute('aria-label', `${controls.dataset.label} ${i + 1}`);
     button.addEventListener('click', () => { show(i); restart(); });
     controls.append(button); return button;
   });
@@ -35,8 +40,8 @@ if (slides.length) {
   function restart() {
     clearInterval(timer);
     if (playing && !document.hidden) timer = setInterval(() => show((current + 1) % slides.length), 6000);
-    pause.textContent = playing ? 'Pause' : 'Play';
-    pause.setAttribute('aria-label', playing ? 'Pause slideshow' : 'Play slideshow');
+    pause.textContent = playing ? pause.dataset.labelPause : pause.dataset.labelPlay;
+    pause.setAttribute('aria-label', playing ? pause.dataset.ariaPause : pause.dataset.ariaPlay);
   }
   pause.addEventListener('click', () => { playing = !playing; restart(); });
   document.addEventListener('visibilitychange', restart);

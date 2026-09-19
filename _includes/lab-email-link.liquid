@@ -1,0 +1,6 @@
+{%- comment -%}
+  연구실 이메일 링크. 이메일은 _data/lab.yml 의 email, 비어 있으면 _data/pi.yml 의 email.
+  사용: {% include lab-email-link.liquid %}  또는  {% include lab-email-link.liquid prefix="email " %}
+{%- endcomment -%}
+{%- assign lab_email = site.data.lab.email | default: site.data.pi.email -%}
+<a href="mailto:{{ lab_email }}">{{ include.prefix }}{{ lab_email }}</a>

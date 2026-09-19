@@ -1,9 +1,11 @@
 {%- comment -%}
-  상단 메뉴. 메뉴 항목은 _data/navigation.yml 에서 수정합니다.
+  상단 메뉴. 메뉴 항목은 _data/navigation.yml, 로고 글자는 _data/lab.yml, 버튼 문구는 _data/strings.yml
 {%- endcomment -%}
-<nav class="topnav" id="topnav" aria-label="Main navigation">
-<a class="brand" href="{{ '/' | relative_url }}">{{ site.lab.short_name }} <span>{{ site.lab.institution }}</span></a>
-  <button class="nav-toggle" aria-label="Open menu" aria-controls="main-menu" aria-expanded="false">
+{%- assign lab = site.data.lab -%}
+{%- assign t = site.data.strings.common -%}
+<nav class="topnav" id="topnav" aria-label="{{ t.main_navigation | escape }}">
+<a class="brand" href="{{ '/' | relative_url }}">{{ lab.short_name }} <span>{{ t.at }} {{ lab.institution }}</span></a>
+  <button class="nav-toggle" aria-label="{{ t.open_menu | escape }}" aria-controls="main-menu" aria-expanded="false" data-label-open="{{ t.open_menu | escape }}" data-label-close="{{ t.close_menu | escape }}">
     <span></span><span></span><span></span>
   </button>
   <ul id="main-menu">

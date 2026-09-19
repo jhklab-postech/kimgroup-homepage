@@ -1,6 +1,10 @@
-# 논문 목록에서 굵게 표시할 연구실 출신 저자 중,
-# members.yml / alumni.yml 에는 없는 사람 (예: 석사 졸업생, 인턴, 방문연구원)
-- Gyuna Park
-- Hoyoung Jung
-- Yerin Han
-- Alexis Chacon
+# 논문 목록에서 굵게 표시할 연구실 출신 저자 중, members.yml / alumni.yml 에는 없는 사람
+# (예: 석사 졸업생, 인턴, 방문연구원). 구성원 파일과 같은 형식입니다.
+#
+#   - name: Gildong Hong
+#     aliases: [G. Hong]      # (선택) 논문에 다른 표기로 적힌 이름
+
+- name: Gyuna Park
+- name: Hoyoung Jung
+- name: Yerin Han
+- name: Alexis Chacon

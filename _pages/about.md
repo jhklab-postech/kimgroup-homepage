@@ -1,4 +1,8 @@
 ---
+# 홈 화면 콘텐츠. 화면 틀은 _layouts/about.liquid 입니다.
+# 여기에 없는 값은 자동으로 가져옵니다:
+#   첫 화면 위 라벨·소속·교수님 이름 → _data/lab.yml, _data/pi.yml
+#   슬라이드 이미지 → _data/highlights.yml, 연구 카드 → _projects/, 소식 → _news/
 layout: about
 title: Home
 permalink: /
@@ -6,7 +10,6 @@ main_class: home
 
 # ── 첫 화면 (Hero) ──────────────────────────────────────────
 hero:
-  eyebrow: KIM GROUP · POSTECH
   title:
     - Quantum materials.
     - Seen in a new light.
@@ -15,15 +18,12 @@ hero:
   buttons:
     - label: Explore research
       url: /research.html
-      style: primary
+      style: primary        # primary(채운 버튼) / secondary(테두리 버튼)
     - label: Meet the group
       url: /current-members.html
       style: secondary
-  affiliation:
-    - Directed by Prof. Jonghwan Kim
-    - Materials Science & Engineering, POSTECH
 
-# 슬라이드 아래 설명 (슬라이드 이미지는 _data/highlights.yml)
+# 슬라이드 아래 설명
 highlights_caption: Exploring light–matter interactions in atomically thin materials.
 
 # ── 숫자 통계 (Hero 아래) ──────────────────────────────────
@@ -38,7 +38,7 @@ stats:
     source: members
     link: /current-members.html
 
-# ── 연구 카드 영역 (카드 내용은 _projects/*.md) ─────────────
+# ── 연구 카드 영역 ─────────────────────────────────────────
 research_section:
   eyebrow: Research
   title:
@@ -46,13 +46,14 @@ research_section:
     - Extraordinary possibilities.
   link_label: Research overview →
 
-# ── Latest news (소식은 _news/*.md) ─────────────────────────
+# ── Latest news ────────────────────────────────────────────
 news_section:
   eyebrow: From the lab
   title: Latest news
-  limit: 6          # 홈에 보여 줄 최신 소식 개수
+  limit: 6              # 홈에 보여 줄 최신 소식 개수
+  date_format: "%b %Y"  # 날짜 표시 형식 (예: Jan 2026)
 
-# ── 하단 노란 띠 ───────────────────────────────────────────
+# ── 하단 Join 띠 ───────────────────────────────────────────
 join:
   eyebrow: Join the group
   title:
