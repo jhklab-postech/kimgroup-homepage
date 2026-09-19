@@ -1,0 +1,23 @@
+---
+layout: page
+---
+{%- comment -%}
+  Research 페이지. 소개 문단은 _pages/research.md, 연구 주제는 _projects/*.md 에서 수정합니다.
+  연구 주제 순서는 각 파일의 importance 값(작을수록 먼저)으로 정해집니다.
+{%- endcomment %}
+<h2 class="overview-heading">{{ page.overview_heading | escape }}</h2>
+{{ content }}
+{%- assign projects = site.projects | sort: 'importance' -%}
+{%- for p in projects %}
+
+<h2 id="{{ p.anchor }}">{{ forloop.index }}. {{ p.title | escape }}</h2>
+{{ p.content }}
+{%- if p.related %}
+<div class="related">
+  <p class="label">Related publications:</p>
+  {%- for r in p.related %}
+  <p>[{{ forloop.index }}] {{ r.title | escape }}, <em>{{ r.venue | escape }}</em>.</p>
+  {%- endfor %}
+</div>
+{%- endif %}
+{%- endfor %}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+{% include head.liquid %}
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to content</a>
+
+{% include header.liquid %}
+
+<main id="content" class="page{% if page.main_class %} {{ page.main_class }}{% endif %}">
+{{ content }}
+</main>
+
+{% include footer.liquid %}
+
+</body>
+</html>

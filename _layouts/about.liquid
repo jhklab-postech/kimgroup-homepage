@@ -1,0 +1,41 @@
+---
+layout: default
+---
+{%- comment -%}
+  홈 화면. 문구는 _pages/about.md 앞부분(front matter)에서 수정합니다.
+  - 슬라이드 이미지 : _data/highlights.yml
+  - 연구 카드       : _projects/*.md (card: 항목)
+  - Latest news     : _news/*.md
+{%- endcomment -%}
+{%- assign hero = page.hero -%}
+<section class="hero">
+<div class="hero-copy"><p class="eyebrow">{{ hero.eyebrow | escape }}</p>
+<h1>{{ hero.title[0] | escape }}{% if hero.title[1] %}<br><span>{{ hero.title[1] | escape }}</span>{% endif %}</h1>
+<p class="hero-subtitle">{{ hero.subtitle | escape }}</p>
+<p class="hero-lede">{{ hero.lede | escape }}</p>
+<div class="actions">{% for b in hero.buttons %}<a class="button {{ b.style | default: 'secondary' }}" href="{{ b.url | relative_url }}">{{ b.label | escape }}{% if b.style == 'primary' %} <span aria-hidden="true">→</span>{% endif %}</a>{% endfor %}</div>
+<p class="hero-affiliation">{% for line in hero.affiliation %}{{ line | escape }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}</p></div>
+{%- assign slides = site.data.highlights -%}
+{%- assign slide_total = slides | size | prepend: '0' | slice: -2, 2 %}
+<div class="hero-visual"><div class="visual-label"><span>RESEARCH HIGHLIGHTS</span><span>01 — {{ slide_total }}</span></div>
+<div class="slideshow" id="slideshow"><div class="frame">{% for s in slides %}<img src="{{ s.image | prepend: '/assets/img/highlights/' | relative_url }}" alt="{% if s.alt %}{{ s.alt | escape }}{% else %}Quantum materials research highlight {{ forloop.index }}{% endif %}"{% if forloop.first %} class="active"{% else %} loading="lazy"{% endif %}>{% endfor %}</div><div class="slideshow-controls"><div class="nav-numbers" aria-label="Choose research image"></div><button class="pause-slides" aria-label="Pause slideshow">Pause</button></div></div>
+<p class="visual-caption">{{ page.highlights_caption | escape }}</p></div>
+</section>
+{%- assign rs = page.research_section %}
+<section class="research-teaser"><div class="section-heading"><div><p class="eyebrow">{{ rs.eyebrow | escape }}</p><h2>{% for line in rs.title %}{{ line | escape }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}</h2></div><a class="text-link" href="{{ '/research.html' | relative_url }}">{{ rs.link_label | escape }}</a></div>
+<div class="research-cards">
+{%- assign projects = site.projects | sort: 'importance' -%}
+{%- for p in projects %}
+<a class="research-card{% if p.featured %} featured{% endif %}" href="{{ '/research.html' | relative_url }}#{{ p.anchor }}"><span class="card-index">{{ forloop.index | prepend: '0' | slice: -2, 2 }} / {{ p.card.label | upcase | escape }}</span><h3>{{ p.card.title | escape }}</h3><p>{{ p.card.summary | escape }}</p><span class="card-link">Explore the science →</span></a>
+{%- endfor %}
+</div></section>
+{%- assign ns = page.news_section %}
+<section class="lab-news">
+    <div class="section-heading"><div><p class="eyebrow">{{ ns.eyebrow | escape }}</p><h2>{{ ns.title | escape }}</h2></div></div>
+    {%- assign news = site.news | sort: 'date' | reverse -%}
+    {%- for item in news limit: ns.limit %}
+    <article class="news-row"><span class="news-date">{{ item.date | date: '%b %Y' }}</span>{{ item.content | strip }}</article>
+    {%- endfor %}
+  </section>
+{%- assign jb = page.join %}
+<section class="join-band"><div><p class="eyebrow">{{ jb.eyebrow | escape }}</p><h2>{% for line in jb.title %}{{ line | escape }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}</h2></div><a class="button dark" href="{{ jb.button_url | relative_url }}">{{ jb.button_label | escape }}</a></section>

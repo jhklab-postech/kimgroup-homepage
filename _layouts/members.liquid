@@ -1,0 +1,15 @@
+---
+layout: page
+---
+{%- comment -%} 구성원 목록은 _data/members.yml 에서 수정합니다. 적힌 순서대로 표시됩니다. {%- endcomment %}
+<div class="members-grid">
+  {%- for m in site.data.members %}
+  <div class="member">
+    <h2 class="name">{{ m.name | escape }}</h2>
+    {%- if m.image %}
+    <img src="{{ m.image | prepend: '/assets/img/people/' | relative_url }}" alt="{{ m.name | escape }}">
+    {%- endif %}
+    <p class="meta">{{ m.role | escape }}{% if m.email %}<br>Email: {{ m.email | escape }}{% endif %}</p>
+  </div>
+  {%- endfor %}
+</div>

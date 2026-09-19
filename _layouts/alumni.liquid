@@ -1,0 +1,21 @@
+---
+layout: page
+---
+{%- comment -%} 졸업생 목록은 _data/alumni.yml 에서 수정합니다. 적힌 순서대로 표시됩니다. {%- endcomment -%}
+{%- for a in site.data.alumni %}
+<div class="alum">
+  {%- if a.image %}
+  <img src="{{ a.image | prepend: '/assets/img/people/' | relative_url }}" alt="{{ a.name | escape }}">
+  {%- endif %}
+  <div class="info">
+    <span class="name">{{ a.name | escape }}</span><br>
+    {%- if a.program %}
+    {{ a.program | escape }}<br>
+    {%- endif %}
+    {% for d in a.degrees %}{{ d | escape }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}
+    {%- if a.present %}
+    <div class="present">Present: {{ a.present | escape }}</div>
+    {%- endif %}
+  </div>
+</div>
+{%- endfor %}

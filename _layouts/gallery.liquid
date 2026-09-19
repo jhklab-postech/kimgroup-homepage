@@ -1,0 +1,12 @@
+---
+layout: page
+---
+{%- comment -%} Lab Life 사진은 _data/lablife.yml 에서 수정합니다. 적힌 순서대로 표시됩니다. {%- endcomment %}
+<div class="gallery">
+  {%- for photo in site.data.lablife %}
+  <figure>
+    <img src="{{ photo.image | prepend: '/assets/img/lab-life/' | relative_url }}" alt="{{ photo.caption | escape }}"{% if forloop.index > 2 %} loading="lazy"{% endif %}>
+    <figcaption>{{ photo.caption | escape }}</figcaption>
+  </figure>
+  {%- endfor %}
+</div>

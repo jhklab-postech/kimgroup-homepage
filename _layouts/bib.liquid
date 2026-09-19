@@ -1,0 +1,54 @@
+---
+---
+{%- comment -%}
+  논문 한 편의 표시 형식 (jekyll-scholar 템플릿. al-folio의 _layouts/bib.liquid 와 같은 역할)
+  - 저자 이름 뒤의 * (공동 제1저자), † (교신저자)는 bib 파일에 그대로 적습니다. 예) Hong*, Chengyun
+  - 연구실 구성원 이름은 자동으로 굵게 표시됩니다.
+    대상: _data/pi.yml, _data/members.yml, _data/alumni.yml 의 name·aliases, _data/lab_authors.yml
+  - 동명이인을 굵게 표시하지 않으려면 bib 항목에 highlight_skip = {4} 처럼 저자 순번을 적습니다.
+  - 논문 번호는 목록 순서대로 자동으로 매겨집니다 (CSS counter).
+{%- endcomment -%}
+{%- capture lab_names -%}
+  |{{ site.data.pi.name }}|
+  {%- for n in site.data.pi.aliases -%}{{ n }}|{%- endfor -%}
+  {%- for m in site.data.members -%}{{ m.name }}|{%- for n in m.aliases -%}{{ n }}|{%- endfor -%}{%- endfor -%}
+  {%- for m in site.data.alumni -%}{{ m.name }}|{%- for n in m.aliases -%}{{ n }}|{%- endfor -%}{%- endfor -%}
+  {%- for n in site.data.lab_authors -%}{{ n }}|{%- endfor -%}
+{%- endcapture -%}
+{%- assign skip = entry.highlight_skip | split: ',' -%}
+{%- capture venue -%}
+  {%- if entry.journal -%}
+    {{ entry.journal }}
+    {%- if entry.volume %} {{ entry.volume }}{%- if entry.number -%}({{ entry.number }}){%- endif -%}{%- endif -%}
+    {%- if entry.pages -%}, {{ entry.pages }}{%- elsif entry.note -%}, {{ entry.note }}{%- endif %} ({{ entry.year }})
+  {%- else -%}
+    {{ entry.note }}
+  {%- endif -%}
+{%- endcapture -%}
+<div class="pub"><strong class="pub-title">{{ entry.title }}</strong><br>
+{%- for author in entry.author_array -%}
+  {%- assign clean_last = author.last | remove: '*' | remove: '†' -%}
+  {%- capture full_name -%}|{{ author.first }} {{ clean_last }}|{%- endcapture -%}
+  {%- assign author_no = forloop.index | append: '' -%}
+  {%- assign is_lab = false -%}
+  {%- if lab_names contains full_name -%}{%- assign is_lab = true -%}{%- endif -%}
+  {%- if skip contains author_no -%}{%- assign is_lab = false -%}{%- endif -%}
+  {%- if is_lab -%}<strong>{{ author.first }} {{ author.last }}</strong>{%- else -%}{{ author.first }} {{ author.last }}{%- endif -%}
+  {%- unless forloop.last -%}, {% endunless -%}
+{%- endfor -%}
+<br><strong><em>
+{%- if entry.url -%}<a href="{{ entry.url }}" target="_blank" rel="noopener">{{ venue }}</a>
+{%- else -%}<span class="journal">{{ venue }}</span>
+{%- endif -%}
+</em></strong>
+{%- if entry.press -%}
+  {%- assign press_items = entry.press | split: ';' -%}
+  <br>[
+  {%- for item in press_items -%}
+    {%- assign parts = item | split: '|' -%}
+    <a href="{{ parts[1] | strip }}" target="_blank" rel="noopener">{{ parts[0] | strip }}</a>
+    {%- unless forloop.last -%}, {% endunless -%}
+  {%- endfor -%}
+  ]
+{%- endif -%}
+</div>
