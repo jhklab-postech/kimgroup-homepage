@@ -1,0 +1,12 @@
+{%- comment -%}
+  논문의 학술지 표기 "학술지 권(호), 쪽 (연도)". 논문 목록(bib.liquid)과 Research 관련 논문(bib_related.liquid)이 함께 씁니다.
+  사용: {% include publication-venue.liquid entry=entry %}
+{%- endcomment -%}
+{%- assign e = include.entry -%}
+{%- if e.journal -%}
+  {{ e.journal }}
+  {%- if e.volume %} {{ e.volume }}{%- if e.number -%}({{ e.number }}){%- endif -%}{%- endif -%}
+  {%- if e.pages -%}, {{ e.pages }}{%- elsif e.note -%}, {{ e.note }}{%- endif %} ({{ e.year }})
+{%- else -%}
+  {{ e.note }}
+{%- endif -%}
