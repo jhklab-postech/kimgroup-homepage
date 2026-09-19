@@ -1,0 +1,283 @@
+/* ============================================================
+   JHK Lab (Kim Group at POSTECH) — 공용 스타일시트
+   포인트 컬러: #5199A8 (hover #5CB0C2, active #44818E)
+   텍스트: #484848 / 배경: #FFFFFF, #F9F9F9
+   글꼴: Raleway(메뉴·제목), Lora(일부 본문) — index.html에서 Google Fonts 로드
+   ============================================================ */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #484848;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+a { color: #5199A8; text-decoration: none; }
+a:hover { color: #5CB0C2; }
+a:active { color: #44818E; }
+
+img { max-width: 100%; height: auto; }
+
+/* ---------- 상단 내비게이션 ---------- */
+.topnav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  max-width: 1120px;
+  margin: 45px auto 0;
+  padding: 0 20px;
+}
+.topnav::before, .topnav::after {
+  content: "";
+  flex: 1;
+  max-width: 160px;
+  height: 1px;
+  background: #bbbbbb;
+  margin: 0 30px;
+}
+.topnav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 4px;
+}
+.topnav li { position: relative; }
+.topnav li > a {
+  display: block;
+  padding: 12px 14px;
+  font-family: 'Raleway', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #7f7f7f;
+  white-space: nowrap;
+}
+.topnav li > a:hover { color: #484848; background: #f5f5f5; }
+.topnav li.current > a { color: #484848; background: #f5f5f5; }
+
+/* PEOPLE 드롭다운 */
+.topnav li .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 20;
+  min-width: 210px;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  flex-direction: column;
+}
+.topnav li:hover .submenu { display: flex; }
+.topnav .submenu a {
+  display: block;
+  padding: 9px 16px;
+  font-family: 'Raleway', Arial, sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #7f7f7f;
+}
+.topnav .submenu a:hover { color: #484848; background: #f5f5f5; }
+
+/* 모바일 햄버거 */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  padding: 14px 16px;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #484848;
+  margin: 5px 0;
+}
+
+/* ---------- 본문 컨테이너 ---------- */
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 20px 80px;
+}
+
+.banner-image { text-align: center; margin-bottom: 40px; }
+
+h1, h2, h3 { color: #2a2a2a; line-height: 1.35; }
+.section-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0 0 18px;
+}
+.lead-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0 0 20px;
+}
+.body-text { font-size: 16px; color: #2a2a2a; }
+
+hr.styled-hr {
+  border: 0;
+  border-top: 1px solid #d9d9d9;
+  margin: 45px 0;
+}
+
+/* 2단 레이아웃 (환영 문구 + 슬라이드쇼) */
+.two-col {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+.two-col > div { flex: 1; min-width: 0; }
+
+/* ---------- 슬라이드쇼 ---------- */
+.slideshow { width: 100%; }
+.slideshow .frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #ffffff;
+}
+.slideshow .frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity .8s ease;
+}
+.slideshow .frame img.active { opacity: 1; }
+.slideshow .nav-numbers {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+  justify-content: flex-start;
+}
+.slideshow .nav-numbers button {
+  border: 0;
+  background: #9b9b9b;
+  color: #ffffff;
+  font-size: 11px;
+  width: 22px;
+  height: 20px;
+  cursor: pointer;
+}
+.slideshow .nav-numbers button:hover { background: #5CB0C2; }
+.slideshow .nav-numbers button.active { background: #484848; }
+
+/* Lab News */
+.lab-news p { font-size: 16px; color: #2a2a2a; margin: 0 0 22px; }
+
+/* ---------- 푸터 ---------- */
+.footer-dark { background: #605b5b; height: 220px; }
+.footer-light { background: #f9f9f9; height: 170px; }
+
+/* ---------- Research ---------- */
+.research h1 { font-size: 30px; margin: 0 0 25px; }
+.research h2 { font-size: 22px; margin: 45px 0 18px; }
+.research p { font-size: 15px; color: #2a2a2a; }
+.research .related { margin-top: 20px; }
+.research .related p { margin: 3px 0; font-size: 14px; }
+.research .related .label { font-weight: bold; }
+
+/* ---------- Principal Investigator ---------- */
+.pi-top { display: flex; gap: 40px; align-items: flex-start; }
+.pi-top .photo { flex: 0 0 300px; }
+.pi-top .info h1 { font-size: 30px; margin: 0 0 20px; }
+.pi-top .info p { font-size: 16px; color: #2a2a2a; margin: 0 0 18px; }
+.pi-section-title { font-size: 22px; font-style: italic; font-weight: bold; color: #2a2a2a; margin: 40px 0 18px; }
+.exp-row { display: grid; grid-template-columns: 220px 1fr 150px; gap: 10px; font-size: 16px; color: #2a2a2a; margin: 4px 0; }
+.exp-row .role { font-weight: bold; }
+.exp-row .when { text-align: right; }
+
+/* ---------- Current Members ---------- */
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 45px 30px;
+  text-align: center;
+}
+.member .name { font-family: 'Lora', Georgia, serif; font-size: 21px; color: #2a2a2a; margin: 0 0 14px; font-weight: 400; }
+.member img { width: 100%; max-width: 259px; }
+.member .meta { font-family: 'Lora', Georgia, serif; font-size: 15px; color: #6b6b6b; margin: 12px 0 0; line-height: 1.8; }
+.member.center-last { grid-column: 2; }
+
+/* ---------- Alumni ---------- */
+.alum { display: flex; gap: 35px; align-items: center; margin-bottom: 50px; }
+.alum img { flex: 0 0 auto; width: 166px; }
+.alum .info { font-size: 16px; color: #2a2a2a; line-height: 1.7; }
+.alum .info .name { font-weight: bold; }
+.alum .info .present { margin-top: 14px; }
+
+/* ---------- Publications ---------- */
+.publications { max-width: 860px; margin: 0 auto; }
+.pub-year { font-size: 28px; font-style: italic; font-weight: bold; color: #2a2a2a; margin: 55px 0 25px; }
+.pub-year:first-of-type { margin-top: 0; }
+.pub { font-size: 13.5px; color: #2a2a2a; margin: 0 0 20px; line-height: 1.65; }
+.pub .journal, .pub a { color: #009291; }
+.pub a:hover { text-decoration: underline; }
+
+/* ---------- Lab Life ---------- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+.gallery figure { margin: 0; }
+.gallery img { width: 100%; display: block; }
+.gallery figcaption {
+  font-family: 'Raleway', Arial, sans-serif;
+  font-size: 13px;
+  color: #7f7f7f;
+  letter-spacing: .5px;
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* ---------- Positions ---------- */
+.positions p { font-size: 16px; color: #2a2a2a; text-align: justify; }
+
+/* ---------- 반응형 ---------- */
+@media (max-width: 767px) {
+  .topnav { margin-top: 0; padding: 0; position: relative; display: block; }
+  .topnav::before, .topnav::after { display: none; }
+  .nav-toggle { display: block; }
+  .topnav ul {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .topnav.open ul { display: flex; }
+  .topnav li .submenu {
+    display: flex;
+    position: static;
+    border: 0;
+    box-shadow: none;
+    padding-left: 16px;
+  }
+  .two-col { flex-direction: column; }
+  .page { padding: 30px 16px 60px; }
+  .members-grid { grid-template-columns: 1fr; }
+  .member.center-last { grid-column: auto; }
+  .pi-top { flex-direction: column; }
+  .pi-top .photo { flex: none; }
+  .exp-row { grid-template-columns: 1fr; gap: 0; margin-bottom: 14px; }
+  .exp-row .when { text-align: left; }
+  .alum { flex-direction: column; align-items: flex-start; }
+  .gallery { grid-template-columns: 1fr; }
+}
