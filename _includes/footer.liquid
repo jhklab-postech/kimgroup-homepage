@@ -1,0 +1,2 @@
+{%- comment -%} 푸터. 내용은 _config.yml 의 lab: 항목에서 수정합니다. {%- endcomment -%}
+<footer class="site-footer"><div><a class="brand" href="{{ '/' | relative_url }}">{{ site.lab.short_name }} <span>{{ site.lab.institution }}</span></a><p>{{ site.lab.full_name }}</p></div><div><a href="mailto:{{ site.lab.email }}">{{ site.lab.email }}</a><p>{% for line in site.lab.address %}{{ line | escape }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}</p></div></footer>

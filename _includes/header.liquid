@@ -1,0 +1,28 @@
+{%- comment -%}
+  상단 메뉴. 메뉴 항목은 _data/navigation.yml 에서 수정합니다.
+{%- endcomment -%}
+<nav class="topnav" id="topnav" aria-label="Main navigation">
+<a class="brand" href="{{ '/' | relative_url }}">{{ site.lab.short_name }} <span>{{ site.lab.institution }}</span></a>
+  <button class="nav-toggle" aria-label="Open menu" aria-controls="main-menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul id="main-menu">
+    {%- for item in site.data.navigation %}
+    {%- assign is_current = false -%}
+    {%- if page.url == item.url -%}{%- assign is_current = true -%}{%- endif -%}
+    {%- for child in item.children -%}
+      {%- if page.url == child.url -%}{%- assign is_current = true -%}{%- endif -%}
+    {%- endfor %}
+    <li{% if is_current %} class="current"{% endif %}>
+      <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+      {%- if item.children %}
+      <ul class="submenu">
+        {%- for child in item.children %}
+        <li><a href="{{ child.url | relative_url }}">{{ child.title }}</a></li>
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+    </li>
+    {%- endfor %}
+  </ul>
+</nav>
