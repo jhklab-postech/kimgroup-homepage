@@ -1,8 +1,10 @@
 # -----------------------------------------------------------------------------
-# 사이트 기본 정보
+# 빌드 설정 파일입니다. 콘텐츠는 여기에 두지 않습니다.
+#   연구실 이름·이메일 등 → _data/lab.yml
+#   화면 문구            → _data/strings.yml
+#   디자인 값            → assets/css/tokens.css
+#   구조 설명            → docs/CONTENT_MODEL.md
 # -----------------------------------------------------------------------------
-title: Kim Group at POSTECH
-description: Laboratory for Ultrafast Imaging and Spectroscopy of Quantum Materials, POSTECH
 lang: en
 timezone: Asia/Seoul
 
@@ -10,16 +12,6 @@ timezone: Asia/Seoul
 # (학교 도메인을 연결해도 수정할 필요 없음)
 url: ""
 baseurl: ""
-
-# 상단 로고, 푸터에 쓰이는 연구실 정보
-lab:
-  short_name: KIM GROUP
-  institution: at POSTECH
-  full_name: Laboratory for Ultrafast Imaging and Spectroscopy of Quantum Materials
-  email: jonghwankim@postech.ac.kr
-  address:
-    - Materials Science & Engineering · POSTECH
-    - Pohang, Republic of Korea
 
 # -----------------------------------------------------------------------------
 # 콘텐츠 컬렉션 (al-folio 방식)
@@ -36,6 +28,8 @@ collections:
 include: ["_pages"]
 exclude:
   - README.md
+  - CHANGELOG.md
+  - docs
   - Gemfile
   - Gemfile.lock
   - vendor

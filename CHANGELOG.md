@@ -19,6 +19,46 @@
 
 ---
 
+## v1.2 — 2026-09-19 · 콘텐츠·디자인 구조 정리 (화면 변화 없음)
+
+AI가 수정하기 쉽고 나중에 관리자 페이지(CMS)를 붙이기 쉽도록 구조만 정리했습니다. 화면은 그대로입니다.
+확인 방법: 8페이지 × 5가지 화면 폭에서 옛/새 CSS의 모든 요소 위치·크기를 비교했고, 차이가 없었습니다.
+
+### 콘텐츠와 화면 틀 분리 (single source of truth)
+- **`_data/lab.yml` 신설**: 연구실 이름·소속·학과·위치·대표 이메일을 모았습니다.
+  - 전에는 `_config.yml`, 홈 문구, 푸터에 흩어져 있었습니다.
+  - 이제 탭 제목, 로고, 라벨, 홈 소개, 푸터가 모두 여기서 가져옵니다.
+- **`_data/strings.yml` 신설**: 레이아웃과 JS에 직접 적혀 있던 화면 문구를 옮겼습니다.
+  - 예: Related publications, Professional Experience, Pause/Play, 메뉴 열기/닫기
+- **이메일**: 3곳에 적혀 있던 것을 한 곳으로 모았습니다 (`lab.yml`이 비어 있으면 `pi.yml`).
+- **홈 소개**: "Directed by Prof. …"와 소속을 `pi.yml`·`lab.yml`에서 가져옵니다.
+- **Research의 Related publications**: 논문 제목·학술지를 다시 적던 방식을 `papers.bib` 키 참조로 바꿨습니다.
+  - 표기는 논문 목록과 같은 형식으로 통일했습니다 (예: `Science (2026)` → `Science 391, 6791 (2026)`).
+- **Publications 페이지**: 틀을 `_layouts/publications.liquid`로 옮겼습니다.
+  - "2010 ~ 2016" 묶음 기준 연도와 제목은 페이지 설정(`archive:`)에서 바꿀 수 있습니다.
+- **사람 데이터 형식 통일**: `lab_authors.yml`을 다른 사람 파일과 같은 형식(`name` + `aliases`)으로 바꿨습니다.
+- **`_config.yml`**: 빌드 설정만 남겼습니다.
+
+### 디자인 값 중앙화
+- **`tokens.css` 확장**: 색에 더해 글꼴, 역할별 글자 크기(모바일 값 포함), 줄 간격, 자간, 간격, 레이아웃 폭·여백, 모서리, 움직임, 겹침 순서를 넣었습니다. 웹 글꼴도 여기서 불러옵니다.
+- **CSS 통합**: `base.css`(옛 Weebly 구조)와 `style.css`(한 줄로 압축된 파일)를 읽기 쉬운 **`main.css`** 하나로 합쳤습니다.
+  - 쓰지 않던 규칙은 지웠습니다.
+- **모서리 정리**: 모서리 값을 4단계로 통일해 일부가 1px 달라졌습니다 (드롭다운·관련 논문 상자 8→7px, 구성원 사진 6→7px, Lab Life 사진 9→10px).
+
+### 기타
+- **PR 빌드 검사**: Pull Request에서 자동 빌드 검사를 합니다 (배포는 main에 Merge될 때만).
+- **`docs/CONTENT_MODEL.md` 신설**: 콘텐츠 유형별 형식, 단일 원본 표, CMS 연결 시 대응 방법을 정리했습니다.
+- **사이트에서 제외**: `CHANGELOG.md`와 `docs/`는 사이트 파일에서 뺐습니다 (저장소에서만 보임).
+
+### 바뀐 파일
+- **새 파일:** `_data/lab.yml`, `_data/strings.yml`, `_includes/lab-label.liquid`, `_includes/lab-email-link.liquid`, `_includes/publication-venue.liquid`, `_layouts/bib_related.liquid`, `_layouts/publications.liquid`, `_pages/publications.md`, `assets/css/main.css`, `docs/CONTENT_MODEL.md`
+- **삭제:** `assets/css/base.css`, `assets/css/style.css` (→ `main.css`), `_pages/publications.html` (→ `.md`)
+- **수정:**
+  - 설정·데이터: `_config.yml`, `_data/lab_authors.yml`, `_pages/about.md`, `_pages/positions.md`, `_projects/*.md`(3개)
+  - 틀: `_includes/head·header·footer·page-heading.liquid`, `_layouts/default·about·research·pi·members·alumni·bib.liquid`
+  - 디자인·동작: `assets/css/tokens.css`, `assets/js/site.js`
+  - 배포·문서: `.github/workflows/deploy.yml`, `README.md`
+
 ## v1.1.1 — 2026-09-19 · 파비콘 수정
 - `assets/img/favicon.svg`의 주석에 `--`가 들어 있어 SVG가 깨지고 탭 아이콘이 표시되지 않던 문제를 고쳤습니다 (XML 주석에는 `--`를 쓸 수 없음).
 
