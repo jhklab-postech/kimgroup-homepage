@@ -1,0 +1,45 @@
+# Alumni 페이지. 적힌 순서대로 표시됩니다.
+#
+#   - name: Gildong Hong
+#     image: gildong-hong.jpg            # assets/img/people/ 안의 파일 (없으면 생략)
+#     program: M.S.-Ph.D. Integrated Course
+#     degrees:
+#       - 2027 Pohang University of Science and Technology (Ph.D.)
+#       - 2021 Pohang University of Science and Technology (B.S.)
+#     present: Samsung Electronics
+#     aliases: [Gil-dong Hong]           # (선택) 논문에 다른 표기로 적힌 이름
+
+- name: Sangho Yoon
+  image: sangho-yoon.jpg
+  program: M.S.-Ph.D. Integrated Course
+  degrees:
+    - 2023 Pohang University of Science and Technology (Ph.D.)
+    - 2017 Sungkyunkwan University (B.S.)
+  present: Samsung Electronics
+
+- name: Subeom Song
+  aliases: [Su-Beom Song, Su-beom Song]
+  image: subeom-song.jpg
+  program: M.S.-Ph.D. Integrated Course
+  degrees:
+    - 2023 Pohang University of Science and Technology (Ph.D.)
+    - 2017 Pohang University of Science and Technology (B.S.)
+  present: Samsung Advanced Institute of Technology
+
+- name: Taeho Kim
+  aliases: [Tae Ho Kim]
+  image: taeho-kim.jpg
+  program: M.S.-Ph.D. Integrated Course
+  degrees:
+    - 2024 Pohang University of Science and Technology (Ph.D.)
+    - 2018 Pohang University of Science and Technology (B.S.)
+  present: Samsung Electronics
+
+- name: Minjeong Kim
+  aliases: [Min Jeong Kim]
+  image: minjeong-kim.jpg
+  program: M.S.-Ph.D. Integrated Course
+  degrees:
+    - 2025 Pohang University of Science and Technology (Ph.D.)
+    - 2019 Pohang University of Science and Technology (B.S.)
+  present: Samsung Electronics

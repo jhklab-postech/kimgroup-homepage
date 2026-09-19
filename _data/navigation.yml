@@ -1,0 +1,21 @@
+# 상단 메뉴. 적힌 순서대로 표시됩니다.
+# children: 을 넣으면 마우스를 올렸을 때 하위 메뉴가 열립니다.
+- title: Home
+  url: /
+- title: Research
+  url: /research.html
+- title: People
+  url: /principal-investigator.html
+  children:
+    - title: Principal Investigator
+      url: /principal-investigator.html
+    - title: Current Members
+      url: /current-members.html
+    - title: Alumni
+      url: /alumni.html
+- title: Publications
+  url: /publications.html
+- title: Lab Life
+  url: /lab-life.html
+- title: Positions
+  url: /positions.html

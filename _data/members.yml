@@ -1,0 +1,63 @@
+# Current Members 페이지. 적힌 순서대로 표시됩니다.
+#
+# 새 구성원 추가:
+#   1) 사진을 assets/img/people/ 에 올립니다 (예: gildong-hong.jpg)
+#   2) 아래에 항목을 추가합니다.
+#
+#   - name: Gildong Hong
+#     role: Graduate Student
+#     email: gildong (at) postech.ac.kr
+#     image: gildong-hong.jpg
+#     aliases: [G. Hong]      # (선택) 논문에 다른 표기로 적힌 이름
+#
+# 졸업하면 이 파일에서 지우고 _data/alumni.yml 로 옮깁니다.
+
+- name: So Young Kim
+  role: Sejong Science Post-doctoral Fellow
+  email: lightsoso (at) postech.ac.kr
+  image: soyoung-kim.jpg
+
+- name: Dasol Kim
+  role: Post-doctoral Fellow
+  email: dsestil (at) postech.ac.kr
+  image: dasol-kim.jpg
+
+- name: Chengyun Hong
+  role: Post-doctoral Fellow
+  email: chengyun (at) postech.ac.kr
+  image: chengyun-hong.jpg
+
+- name: Ye Tao
+  role: Post-doctoral Fellow
+  email: taoye1996 (at) postech.ac.kr
+  image: ye-tao.jpg
+
+- name: Sera Yang
+  role: Graduate Student
+  email: ra0305 (at) postech.ac.kr
+  image: sera-yang.jpg
+
+- name: Seong-Joon Jeon
+  role: Graduate Student
+  email: sjjeon (at) postech.ac.kr
+  image: seongjoon-jeon.png
+
+- name: Hyungseob Cho
+  role: Graduate Student
+  email: alex0803 (at) postech.ac.kr
+  image: hyungseob-cho.jpg
+
+- name: Donggeun An
+  role: Graduate Student
+  email: rootofeast (at) postech.ac.kr
+  image: donggeun-an.jpg
+
+- name: Junseok Lee
+  role: Graduate Student
+  email: junseok.lee (at) postech.ac.kr
+  image: junseok-lee.jpg
+
+- name: Dongwon Seo
+  role: Graduate Student
+  email: tjdhddnjs994 (at) postech.ac.kr
+  image: dongwon-seo.jpg

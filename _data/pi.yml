@@ -1,0 +1,33 @@
+# Principal Investigator 페이지
+# image: assets/img/people/ 안의 파일 이름
+# aliases: 논문(bib)에 다른 표기로 적힌 이름. 논문 목록에서 굵게 표시할 때 사용합니다.
+name: Jonghwan Kim
+aliases:
+  - J. Kim
+image: jonghwan-kim.png
+address:
+  - Department of Materials Science and Engineering, POSTECH
+  - 77 Cheongam-Ro, Nam-Gu, Pohang, Gyeongbuk, 37673, Korea
+office: "Science Building I, #225 (제 1공학관 225호)"
+phone: "+82-54-279-2137"
+email: jonghwankim@postech.ac.kr
+
+# 경력: 위에서부터 최신순
+experience:
+  - role: Associate Professor
+    organization: Materials Science & Engineering, POSTECH
+    period: 2023 – Present
+  - role: Assistant Professor
+    organization: Materials Science & Engineering, POSTECH
+    period: 2017 – 2022
+  - role: Post-doctoral Fellow
+    organization: Lawrence Berkeley National Laboratory
+    period: 2015 – 2016
+
+education:
+  - degree: Ph.D.
+    detail: in Physics, UC Berkeley, U.S.A.
+    date: May. 2015
+  - degree: B.S.
+    detail: in Physics, Yonsei University, South Korea
+    date: Feb. 2010

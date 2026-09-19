@@ -1,0 +1,9 @@
+# 홈 화면 오른쪽 Research Highlights 슬라이드. 적힌 순서대로 넘어갑니다.
+# image: assets/img/highlights/ 안의 파일 이름
+# alt:   (선택) 이미지 설명. 비워 두면 "Quantum materials research highlight N"
+- image: highlight-01.png
+- image: highlight-02.png
+- image: highlight-03.png
+- image: highlight-04.png
+- image: highlight-05.png
+- image: highlight-06.png
