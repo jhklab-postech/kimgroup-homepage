@@ -83,3 +83,49 @@ if (counters.length && 'IntersectionObserver' in window && !matchMedia('(prefers
   }), { threshold: 0.6 });
   counters.forEach(el => { el.textContent = '0'; observer.observe(el); });
 }
+
+// Lab Life 사진 보기 창: 카드를 누르면 그 이벤트의 사진을 원본 비율로 넘겨 봄
+// (카드의 data-photos = 사진 주소 목록, data-title = 이벤트 제목. JS가 없으면 대표 사진 파일이 그냥 열림)
+const lightbox = document.querySelector('.lightbox');
+if (lightbox && typeof lightbox.showModal === 'function') {
+  const image = lightbox.querySelector('.lightbox-image');
+  const title = lightbox.querySelector('.lightbox-title');
+  const count = lightbox.querySelector('.lightbox-count');
+  const prev = lightbox.querySelector('.lightbox-prev');
+  const next = lightbox.querySelector('.lightbox-next');
+  let photos = [], index = 0, trigger = null, startX = null, swiped = false;
+  const render = () => {
+    image.src = photos[index];
+    image.alt = `${title.textContent} ${index + 1}`;
+    count.textContent = photos.length > 1 ? `${index + 1} / ${photos.length}` : '';
+    prev.hidden = next.hidden = photos.length < 2;
+    if (photos.length > 1) new Image().src = photos[(index + 1) % photos.length];  // 다음 사진 미리 불러오기
+  };
+  const go = step => { if (photos.length > 1) { index = (index + step + photos.length) % photos.length; render(); } };
+  document.querySelectorAll('.event-cover').forEach(link => link.addEventListener('click', e => {
+    e.preventDefault();
+    photos = JSON.parse(link.dataset.photos); index = 0; trigger = link;
+    title.textContent = link.dataset.title;
+    render(); lightbox.showModal();
+  }));
+  prev.addEventListener('click', () => go(-1));
+  next.addEventListener('click', () => go(1));
+  const finish = () => { image.removeAttribute('src'); trigger?.focus(); };  // 닫은 뒤: 사진 비우고 누른 카드로 포커스 되돌리기
+  const close = () => { lightbox.close(); finish(); };
+  lightbox.querySelector('.lightbox-close').addEventListener('click', close);
+  lightbox.addEventListener('click', e => {  // 사진 바깥을 누르면 닫기 (밀어 넘긴 직후의 클릭은 무시)
+    if (swiped) { swiped = false; return; }
+    if (e.target === lightbox) close();
+  });
+  lightbox.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') go(-1);
+    if (e.key === 'ArrowRight') go(1);
+  });
+  lightbox.addEventListener('pointerdown', e => { startX = e.clientX; swiped = false; });
+  lightbox.addEventListener('pointerup', e => {  // 터치 화면에서 좌우로 밀어 넘기기
+    swiped = startX !== null && Math.abs(e.clientX - startX) > 50;
+    if (swiped) go(e.clientX < startX ? 1 : -1);
+    startX = null;
+  });
+  lightbox.addEventListener('close', finish);  // Esc로 닫은 경우
+}

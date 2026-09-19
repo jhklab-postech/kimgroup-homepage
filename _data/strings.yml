@@ -8,6 +8,7 @@ common:
   main_navigation: Main navigation
   open_menu: Open menu
   close_menu: Close menu
+  months: [Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]   # 날짜 표시 (예: May 2022)
 
 home:
   directed_by: Directed by Prof.           # 뒤에 교수님 이름(_data/pi.yml)이 붙음
@@ -28,6 +29,13 @@ research:
 people:
   email: "Email:"                          # Current Members 카드
   present: "Present:"                      # Alumni 현재 소속
+
+lablife:
+  photos: photos                           # 카드 설명 (화면 읽기 프로그램용), 앞에 사진 수가 붙음
+  gallery: Photo gallery                   # 사진 보기 창 이름
+  close: Close
+  previous: Previous photo
+  next: Next photo
 
 pi:
   office: "Office & lab :"

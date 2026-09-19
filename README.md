@@ -17,7 +17,7 @@ Jekyll(al-folio 방식 콘텐츠 관리) + GitHub Pages 자동 배포.
 | 연구 주제 (Research 페이지 + 홈 카드) | `_projects/`의 Markdown 파일 |
 | 홈 문구, 버튼, 숫자 통계 항목 | `_pages/about.md` 앞부분 |
 | 홈 슬라이드 이미지 | `_data/highlights.yml` + `assets/img/highlights/` |
-| Lab Life 사진 | `_data/lablife.yml` + `assets/img/lab-life/` |
+| Lab Life 이벤트·사진 | `_data/lablife.yml` + `assets/img/lab-life/` |
 | Research 소개, Positions 문구 | `_pages/research.md`, `_pages/positions.md` |
 | 상단 메뉴 | `_data/navigation.yml` |
 | 버튼·라벨·소제목 같은 화면 문구 | `_data/strings.yml` |
@@ -64,6 +64,17 @@ date: 2027-03-01
 ---
 Gildong's work is accepted to _**Nature Physics**_. _Congratulations!_
 ```
+
+### 새 Lab Life 이벤트
+사진을 `assets/img/lab-life/`에 올리고 `_data/lablife.yml`에 추가합니다. 날짜순 정렬과 연도별 묶음은 자동입니다.
+```yaml
+- title: 스승의 날
+  date: "2026-05"          # 월을 모르면 "2026"
+  photos:                  # 첫 번째가 대표 사진, 여러 장이면 클릭해서 넘겨 봄
+    - 2026-05-teachers-day-1.jpg
+    - 2026-05-teachers-day-2.jpg
+```
+대표 사진은 4:3으로 잘립니다. 얼굴이 잘리면 `cover_position: "center 30%"`처럼 보일 위치를 지정하세요.
 
 ### 새 연구 주제
 `_projects/`의 기존 파일을 복사해서 `title`, `anchor`, `importance`(순서), `card`(홈 카드 문구)를 고치고 본문을 씁니다.
