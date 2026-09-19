@@ -36,6 +36,10 @@
   --color-shadow:             color-mix(in srgb, var(--color-text) 10%, transparent);
   --color-avatar-bg:          var(--color-border);                                          /* 사진 없는 사람: 원형 배경 */
   --color-avatar-fg:          color-mix(in srgb, var(--color-muted) 55%, var(--color-bg));  /* 사진 없는 사람: 머리·어깨 */
+  --color-overlay:            color-mix(in srgb, var(--color-text) 94%, transparent);       /* 사진 보기 창 배경 */
+  --color-on-overlay:         var(--color-bg);                                              /* 사진 보기 창 글자·버튼 */
+  --color-on-overlay-muted:   color-mix(in srgb, var(--color-bg) 68%, transparent);
+  --color-badge-bg:           color-mix(in srgb, var(--color-text) 72%, transparent);       /* 사진 위 "+N" 표시 */
 
   /* ── 2. 글꼴 ─────────────────────────────────────────────── */
   --font-serif: 'EB Garamond', Georgia, serif;  /* 제목, 큰 숫자 */
@@ -121,6 +125,7 @@
   --radius-sm: 7px;   /* 버튼, 작은 사진, 드롭다운 */
   --radius-md: 10px;  /* 카드, 사진 */
   --radius-lg: 12px;  /* 큰 띠, PI 사진 */
+  --radius-pill: 999px;  /* 알약 모양 작은 표시 */
   --border-width: 1px;
 
   /* ── 7. 움직임·겹침 순서 ─────────────────────────────────── */
