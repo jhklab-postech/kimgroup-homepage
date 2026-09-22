@@ -4,7 +4,10 @@
 {%- assign lab = site.data.lab -%}
 {%- assign t = site.data.strings.common -%}
 <nav class="topnav" id="topnav" aria-label="{{ t.main_navigation | escape }}">
-<a class="brand" href="{{ '/' | relative_url }}">{{ lab.short_name }} <span>{{ t.at }} {{ lab.institution }}</span></a>
+  <div class="brand-pair">
+    <a class="university-brand" href="https://www.postech.ac.kr/" aria-label="POSTECH main website"><img src="{{ '/assets/img/postech-logo.png' | relative_url }}" alt="POSTECH" width="160" height="38"></a>
+    <a class="brand lab-brand" href="{{ '/' | relative_url }}" aria-label="Kim Group home"><img src="{{ '/assets/img/kim-group-logo.png' | relative_url }}" alt="KIM GROUP" width="99" height="19"><span>{{ t.at }} {{ lab.institution }}</span></a>
+  </div>
   <button class="nav-toggle" aria-label="{{ t.open_menu | escape }}" aria-controls="main-menu" aria-expanded="false" data-label-open="{{ t.open_menu | escape }}" data-label-close="{{ t.close_menu | escape }}">
     <span></span><span></span><span></span>
   </button>
