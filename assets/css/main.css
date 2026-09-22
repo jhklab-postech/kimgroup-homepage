@@ -275,6 +275,19 @@ a.stat:hover .stat-label::after, a.stat:focus-visible .stat-label::after { opaci
 .site-footer a:not(.brand) { font-size: var(--text-ui); }
 .site-footer .brand span { display: inline; font-size: var(--text-label); margin-left: 5px; }
 
+/* School identity: supplied artwork, with separate university and lab links. */
+.brand-pair { display: flex; align-items: center; gap: var(--space-4); flex-shrink: 0; }
+.university-brand { display: inline-flex; align-items: center; flex-shrink: 0; }
+.university-brand img { display: block; width: 160px; height: auto; }
+.lab-brand { display: block; }
+.lab-brand img { display: block; width: 99px; height: auto; }
+.site-footer .lab-brand span { display: block; margin-left: 0; }
+.site-footer .privacy-policy { display: inline-block; padding: var(--space-2) 0; color: var(--color-text); font-weight: var(--weight-bold); text-decoration: underline; text-underline-offset: .2em; }
+@media (max-width: 767px) {
+  .brand-pair { gap: var(--space-3); }
+  .university-brand img { width: 128px; }
+}
+
 /* ── 6. 각 페이지 ─────────────────────────────────────────────────────── */
 /* Research */
 .research h1 { font-size: var(--text-h1); margin: 0 0 42px; }

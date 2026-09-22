@@ -1,3 +1,13 @@
 {%- comment -%} 푸터. 내용은 _data/lab.yml 에서 가져옵니다. {%- endcomment -%}
 {%- assign lab = site.data.lab -%}
-<footer class="site-footer"><div><a class="brand" href="{{ '/' | relative_url }}">{{ lab.short_name }} <span>{{ site.data.strings.common.at }} {{ lab.institution }}</span></a><p>{{ lab.full_name | escape }}</p></div><div>{% include lab-email-link.liquid %}<p>{{ lab.department | escape }} · {{ lab.institution | escape }}<br>{{ lab.location | escape }}</p></div></footer>
+<footer class="site-footer">
+  <div>
+    <div class="brand-pair">
+      <a class="university-brand" href="https://www.postech.ac.kr/" aria-label="POSTECH main website"><img src="{{ '/assets/img/postech-logo.png' | relative_url }}" alt="POSTECH" width="160" height="38" loading="lazy"></a>
+      <a class="brand lab-brand" href="{{ '/' | relative_url }}" aria-label="Kim Group home"><img src="{{ '/assets/img/kim-group-logo.png' | relative_url }}" alt="KIM GROUP" width="99" height="19" loading="lazy"><span>{{ site.data.strings.common.at }} {{ lab.institution }}</span></a>
+    </div>
+    <p>{{ lab.full_name | escape }}</p>
+    <a class="privacy-policy" href="https://www.postech.ac.kr/kor/usage-guide/privacy_policy.do" lang="ko">개인정보처리방침</a>
+  </div>
+  <div>{% include lab-email-link.liquid %}<p>{{ lab.department | escape }} · {{ lab.institution | escape }}<br>{{ lab.location | escape }}</p></div>
+</footer>
