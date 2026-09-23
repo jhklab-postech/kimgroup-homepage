@@ -288,6 +288,11 @@ a.stat:hover .stat-label::after, a.stat:focus-visible .stat-label::after { opaci
   .university-brand img { width: 128px; }
 }
 
+/* 넓은 화면에서만 연구실 전체 이름을 한 줄로. 840px 미만은 오른쪽 열을 밀어내므로 제외합니다. */
+@media (min-width: 840px) {
+  .site-footer p { max-width: 470px; }
+}
+
 /* ── 6. 각 페이지 ─────────────────────────────────────────────────────── */
 /* Research */
 .research h1 { font-size: var(--text-h1); margin: 0 0 42px; }
